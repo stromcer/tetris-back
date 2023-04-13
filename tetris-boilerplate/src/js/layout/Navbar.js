@@ -1,20 +1,24 @@
 import React from "react";
-import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import BootstrapNavbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <BootstrapNavbar bg="light" expand="lg">
-      <Container>
-        <BootstrapNavbar.Brand href="#home">React-Bootstrap</BootstrapNavbar.Brand>
+    <BootstrapNavbar bg="dark" expand="lg" variant="dark" className="px-5">
+        <BootstrapNavbar.Brand href="#home">Tetris Online</BootstrapNavbar.Brand>
         <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" />
         <BootstrapNavbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+          <Nav className="me-auto d-flex justify-content-between w-100">
+            <div className="d-flex">
+            <Nav.Item><Link to="/">Jugar</Link></Nav.Item>
+            <Nav.Item><Link to="/options">Opciones</Link></Nav.Item>
+            </div>
+            <div>
+            <Nav.Item><Link to="/login">Iniciar sesion</Link></Nav.Item>
+            </div>
+            {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
                 Another action
@@ -24,10 +28,9 @@ const Navbar = () => {
               <NavDropdown.Item href="#action/3.4">
                 Separated link
               </NavDropdown.Item>
-            </NavDropdown>
+            </NavDropdown> */}
           </Nav>
         </BootstrapNavbar.Collapse>
-      </Container>
     </BootstrapNavbar>
   )
 }
