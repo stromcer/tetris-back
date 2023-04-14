@@ -1,19 +1,13 @@
 @font-face {
   font-family: Unibody;
-  src: url(Unibody8.ttf);
+  src: url(js/assets/fonts/Unibody8.ttf);
 }
-
 
 body {
   margin: 0;
   font-family: Unibody;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }
 
 .nav-item a{

@@ -10,8 +10,8 @@ const Home = () => {
         <h1>{store.test}</h1>
         <button onClick={actions.handleTheme}>Escucha Nuestro Tema</button>
         </>
-    )
+    );
 
-}
+};
 
 export default Home;

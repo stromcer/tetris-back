@@ -1,8 +1,8 @@
 import React from "react";
 import { createBrowserRouter } from "react-router-dom";
-import Home from "../views/home";
+import Home from "../views/Home";
 import Options from "../views/Options";
-import Layout from "../layout/layout";
+import Layout from "../layout/Layout";
 import Login from "../views/Login";
 
 const routes = [
@@ -19,7 +19,6 @@ const routes = [
     element:<Login />
   }
 ]
-
 
   const fullRoutes = [{
     path: "/",
