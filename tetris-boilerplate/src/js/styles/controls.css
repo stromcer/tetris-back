@@ -1,0 +1,11 @@
+.controls-container{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.controls-container > div {
+    margin:auto;
+    display: flex;
+    margin-block: 10px;
+}
