@@ -14,9 +14,11 @@ const Navbar = () => {
             <div className="d-flex">
             <Nav.Item><Link to="/">Jugar</Link></Nav.Item>
             <Nav.Item><Link to="/options">Opciones</Link></Nav.Item>
+            <Nav.Item><Link to="/acercade">Acerca De</Link></Nav.Item>
             </div>
-            <div>
+            <div className="d-flex">
             <Nav.Item><Link to="/login">Iniciar sesion</Link></Nav.Item>
+            <Nav.Item><Link to="/registro">Registrarse</Link></Nav.Item>
             </div>
             {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
