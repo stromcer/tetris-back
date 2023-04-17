@@ -4,7 +4,6 @@ from admin import setup_admin
 from routes import api
 from flask_socketio import SocketIO, send
 
-
 # INICIAMOS APP
 app = Flask(__name__)
 
@@ -21,13 +20,11 @@ socketio = SocketIO(app)
 with app.app_context():
     db.create_all()
 
-
 # Iniciamos el admin
 setup_admin(app)
 
 # Iniciamos la blueprint "api"
 app.register_blueprint(api, url_prefix='/api')
-
 
 ##PARTE PARA RUTAS
 @app.route("/")
