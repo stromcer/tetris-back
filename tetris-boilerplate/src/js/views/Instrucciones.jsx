@@ -1,9 +1,9 @@
 import React from "react";
 
-const AcercaDe = () => {
+const Instrucciones = () => {
     return(
         <h1>Informacion Sobre el juego</h1>
     );
 };
 
-export default AcercaDe;
+export default Instrucciones;

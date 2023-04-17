@@ -5,7 +5,7 @@ import Options from "../views/Options";
 import Layout from "../layout/Layout";
 import Login from "../views/Login";
 import Registro from "../views/Registro";
-import AcercaDe from "../views/AcercaDe";
+import Instrucciones from "../views/Instrucciones";
 
 const routes = [
   {
@@ -25,8 +25,8 @@ const routes = [
     element:<Registro />
   },
   {
-    path:"/acercade",
-    element:<AcercaDe />
+    path:"/instrucciones",
+    element:<Instrucciones />
   }
 ]
 

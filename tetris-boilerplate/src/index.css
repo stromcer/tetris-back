@@ -8,6 +8,7 @@ body {
   font-family: Unibody;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url("https://static.vecteezy.com/system/resources/thumbnails/007/278/160/small/polygon-geometric-design-abstract-technology-concept-abstract-blue-light-background-vector.jpg");
 }
 
 .nav-item a{
@@ -16,3 +17,14 @@ body {
   margin-inline: 8px;
 }
 
+.navbar-style{
+  background-color: #226D85  ;
+}
+
+.container {
+  border: 2px solid black;
+  border-radius: 10px;
+  margin-top: 100px;
+  background: white;
+  font-weight: 700;
+}

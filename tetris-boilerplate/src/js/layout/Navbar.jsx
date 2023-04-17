@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <BootstrapNavbar bg="dark" expand="lg" variant="dark" className="px-5">
+    <BootstrapNavbar className="navbar-style px-5" expand="lg" variant="dark" >
         <BootstrapNavbar.Brand href="#home">Tetris Online</BootstrapNavbar.Brand>
         <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" />
         <BootstrapNavbar.Collapse id="basic-navbar-nav">
@@ -14,7 +14,7 @@ const Navbar = () => {
             <div className="d-flex">
             <Nav.Item><Link to="/">Jugar</Link></Nav.Item>
             <Nav.Item><Link to="/options">Opciones</Link></Nav.Item>
-            <Nav.Item><Link to="/acercade">Acerca De</Link></Nav.Item>
+            <Nav.Item><Link to="/instrucciones">Instrucciones de Juego</Link></Nav.Item>
             </div>
             <div className="d-flex">
             <Nav.Item><Link to="/login">Iniciar sesion</Link></Nav.Item>
