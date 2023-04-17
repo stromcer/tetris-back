@@ -1,7 +1,8 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 from database import db
 from admin import setup_admin
 from routes import api
+from flask_socketio import SocketIO, send
 
 
 # INICIAMOS APP
@@ -10,6 +11,11 @@ app = Flask(__name__)
 # Configuracion BBDD 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db"
 db.init_app(app)
+
+# Usando socketIO
+
+app.config["SECRET_KEY"] ='secret'
+socketio = SocketIO(app)
 
 # Creamos las tablas de la BBDD (Si no estan creadas)
 with app.app_context():
@@ -28,9 +34,9 @@ app.register_blueprint(api, url_prefix='/api')
 def test():
     return jsonify("Hola")
 
-
-
-
+@app.route("/chat")
+def index():
+    return render_template('index.html')
 
 ## NO ESCRIBIR CODIGO DEBAJO DE ESTA LINEA.
 if __name__ == '__main__':
