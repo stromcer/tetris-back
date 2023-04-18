@@ -20,13 +20,13 @@ const Tetris = () => {
     const [gameOver, setGameOver]= useState(false);
     
     //desestructuramos a el jugador xD
-    const [player , updatePlayePos , resetPlayer] = usePlayer();
+    const [player , updatePlayerPos , resetPlayer] = usePlayer();
     //Estado de juego para ese jugador
     const [stage , setStage] = useStage(player);
 
   
   const movePlayer = dir =>{
-    updatePlayePos({x: dir , y: 0})
+    updatePlayerPos({x: dir , y: 0})
   }
   
 
@@ -36,35 +36,24 @@ const Tetris = () => {
 
   }
 
-  const drop =()=>{
-    updatePlayePos({x: 0 , y : 1 , collided: false})
-
+  const drop = () => {
+    updatePlayerPos({ x: 0, y: 1, collided: false })
   }
 
-
-  const dropPlayer=()=>{
- drop()
-
+  const dropPlayer = () => {
+    drop();
   }
 
-
-  const move =({KeyCode})=>{
-    if(!gameOver){
-        if(KeyCode === 37){
-            movePlayer(-1) //para movernos a la izquierda
-        }
-        else if (KeyCode === 39){
-            movePlayer(1) //para mover a la derecha
-        }
-        else if(KeyCode === 40){
-            dropPlayer() //para que baje mas rapido
-
-        }
-            
-        
-
+  const move = ({ keyCode }) => {
+    if (!gameOver) {
+      if (keyCode === 37) {
+        movePlayer(-1);
+      } else if (keyCode === 39) {
+        movePlayer(1);
+      } else if (keyCode === 40) {
+        dropPlayer();
+      }
     }
-
   }
   
     return (

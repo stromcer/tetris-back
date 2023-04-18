@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { randomTetromino } from "../../components/tetrominos";
+import { TETROMINOS, randomTetromino } from "../../components/tetrominos";
 import { STAGE_WIDTH } from "../../gameHelpers";
 
 export const usePlayer=()=>{
@@ -8,7 +8,7 @@ export const usePlayer=()=>{
  const [player , setPlayer] = useState({
  pos: { x: 0, y: 0 },
  //funcion que hace que aparezca una figura aleatoriamente creada anteriormente en el archivo terominos
- tetromino: randomTetromino().shape,
+ tetromino: TETROMINOS[0].shape,
  //propiedad que hemos creado en falso
  collided: false,
  })
