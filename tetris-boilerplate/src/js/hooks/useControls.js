@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const useControls = () => {
     const [modalsShows, setModalsShows] = useState({
@@ -21,17 +21,17 @@ const useControls = () => {
         "keyCode": 37,  
         "code": "ArrowLeft",
        },
-       moveRightButton:{
+       moveRightButton: {
         "key": "ArrowRight",
         "keyCode": 39,
         "code": "ArrowRight",
        },
-       moveDownButton:{
+       moveDownButton: {
         "key": "ArrowDown",
         "keyCode": 40,
         "code": "ArrowDown",
        },
-       pauseButton:{
+       pauseButton: {
         "key": "p",
         "keyCode": 80,
         "code": "KeyP",
@@ -39,9 +39,9 @@ const useControls = () => {
     })
     
 
-    const handleChangeButton = (button ,mappedKey) => setButtonsMap(res => ({...res, [button]: mappedKey}))
-    const handleOpenModal = (modalName) => setModalsShows(res => ({...res, [modalName]: true}));
-    const handleCloseModal = (modalName) => setModalsShows(res => ({...res, [modalName]: false}));
+    const handleChangeButton = (button ,mappedKey) => setButtonsMap(prev => ({...prev, [button]: mappedKey}))
+    const handleOpenModal = (modalName) => setModalsShows(prev => ({...prev, [modalName]: true}));
+    const handleCloseModal = (modalName) => setModalsShows(prev => ({...prev, [modalName]: false}));
 
 
     return({buttonsMap,modalsShows, handleOpenModal, handleCloseModal, handleChangeButton})

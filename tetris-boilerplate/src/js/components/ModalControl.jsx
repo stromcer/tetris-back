@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Modal from "react-bootstrap/Modal";
 import useControls from "../hooks/useControls";
 
@@ -11,7 +11,7 @@ const ModalControls = ({ modalName, searchedKey, text }) => {
     handleChangeButton
   } = useControls();
     
-  const testin = (e) => {
+  const handlePressKey = (e) => {
     if (!modalsShows[modalName]) return
     const {key , keyCode, code} = e;
     const new_key = {key , keyCode, code};
@@ -23,9 +23,8 @@ const ModalControls = ({ modalName, searchedKey, text }) => {
 
 
 
-
   return (
-    <div  onKeyDown={testin}>
+    <div className="col-6 text-center" onKeyDown={handlePressKey}>
       <button onClick={()=>handleOpenModal(modalName)}>{buttonsMap[searchedKey].key}</button>
 
       <Modal show={modalsShows[modalName]} onHide={()=>handleCloseModal(modalName)} > 
