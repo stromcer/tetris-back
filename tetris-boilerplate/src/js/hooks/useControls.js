@@ -1,74 +1,51 @@
 import { useEffect, useState } from "react";
 
 const useControls = () => {
-    const [ rotateButton, setRotateButton ] = useState({
+    const [modalsShows, setModalsShows] = useState({
+        rotateModal: false,
+        moveLeftModal: false,
+        moveRightModal: false,
+        moveDownModal: false,
+        pauseModal: false
+    })
+
+
+    const [ buttonsMap, setButtonsMap ] = useState({
+        rotateButton: {
         "key": "ArrowUp",
         "keyCode": 38,
-        "which": 38,
         "code": "ArrowUp",
-        "location": 0,
-        "altKey": false,
-        "ctrlKey": false,
-        "metaKey": false,
-        "shiftKey": false,
-        "repeat": false
-       })
-
-    const [ moveLeftButton, setMoveLeftButton ] = useState({
+       },
+       moveLeftButton: {
         "key": "ArrowLeft",
-        "keyCode": 37,
-        "which": 37,
+        "keyCode": 37,  
         "code": "ArrowLeft",
-        "location": 0,
-        "altKey": false,
-        "ctrlKey": false,
-        "metaKey": false,
-        "shiftKey": false,
-        "repeat": false
-       })
-    
-    const [ moveRightButton, setMoveRightButton ] = useState({
+       },
+       moveRightButton:{
         "key": "ArrowRight",
         "keyCode": 39,
-        "which": 39,
         "code": "ArrowRight",
-        "location": 0,
-        "altKey": false,
-        "ctrlKey": false,
-        "metaKey": false,
-        "shiftKey": false,
-        "repeat": false
-       })
-
-    const [ moveDownButton, setMoveDownButton ] = useState({
+       },
+       moveDownButton:{
         "key": "ArrowDown",
         "keyCode": 40,
-        "which": 40,
         "code": "ArrowDown",
-        "location": 0,
-        "altKey": false,
-        "ctrlKey": false,
-        "metaKey": false,
-        "shiftKey": false,
-        "repeat": false
-       })
-    
-    const [ pauseButton, setPauseButton ] = useState({
+       },
+       pauseButton:{
         "key": "p",
         "keyCode": 80,
-        "which": 80,
         "code": "KeyP",
-        "location": 0,
-        "altKey": false,
-        "ctrlKey": false,
-        "metaKey": false,
-        "shiftKey": false,
-        "repeat": false
-       })
+       }
+    })
+    
+
+    const handleChangeButton = (button ,mappedKey) => setButtonsMap(res => ({...res, [button]: mappedKey}))
+    const handleOpenModal = (modalName) => setModalsShows(res => ({...res, [modalName]: true}));
+    const handleCloseModal = (modalName) => setModalsShows(res => ({...res, [modalName]: false}));
 
 
-
-    return({rotateButton,moveRightButton,moveLeftButton,moveDownButton, pauseButton})
+    return({buttonsMap,modalsShows, handleOpenModal, handleCloseModal, handleChangeButton})
 }
 
 export default useControls;
+

@@ -8,4 +8,13 @@
     margin:auto;
     display: flex;
     margin-block: 10px;
+    align-items: center;
+}
+
+p{
+    margin: none;
+}
+
+button{
+    width: 200px;
 }
