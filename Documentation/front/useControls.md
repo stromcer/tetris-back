@@ -28,6 +28,8 @@ La lista de propiedades disponibles son las siguientes. Se especificara el forma
 ### Métodos
 La lista de metodos disponibles en este custom hook:
 `const { handleOpenModal, handleCloseModal, handleChangeButton } = useControls()`
+
+
 **handleOpenModal(modalName) :** Muestra el modal que se especifique. *modalName = Nombre de modal a mostrar, string*
 
 **handleCloseModal(modalName) :** Cierra el modal que se especifique. *modalName = Nombre de modal a cerrar, string*
