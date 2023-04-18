@@ -1,42 +1,62 @@
 import React from "react";
-import useControls from "../hooks/useControls";
 import "../styles/controls.css";
+import ModalControls from "./ModalControl";
 
 const Controls = () => {
-  const {
-    rotateButton,
-    moveLeftButton,
-    moveRightButton,
-    moveDownButton,
-    pauseButton,
-  } = useControls();
 
   return (
     <>
-      <div className="container controls-container border-rounded p-2 bg-white">
-        <div>
+      <div className="container controls-container border-rounded py-5 bg-white">
+        <div className="mb-5">
           <h1> CONTROLES </h1>
         </div>
-        <div>
-          <p>Rotar pieza :</p>
-          <button>{rotateButton.key}</button>
+
+        <div className="mx-auto w-75">
+          <div className="col text-center">Rotar pieza :</div>
+          <ModalControls
+          
+            modalName="rotateModal"
+            searchedKey="rotateButton"
+            text="ROTAR PIEZA"
+          />
         </div>
-        <div>
-          <p>Mover a la izquierda :</p>
-          <button>{moveLeftButton.key}</button>
+
+        <div className="mx-auto w-75">
+          <div className="col text-center">Mover a la izquierda :</div>
+          <ModalControls
+            modalName="moveLeftModal"
+            searchedKey="moveLeftButton"
+            text="DESPLAZAR PIEZA A LA IZQUIERDA"
+          />
         </div>
-        <div>
-          <p>Mover a la derecha :</p>
-          <button>{moveRightButton.key}</button>
+
+        <div className="mx-auto w-75">
+          <div className="col text-center">Mover a la derecha :</div>
+          <ModalControls
+            modalName="moveRightModal"
+            searchedKey="moveRightButton"
+            text="DESPLAZAR PIEZA A LA DERECHA"
+          />
         </div>
-        <div>
-          <p>Bajar la pieza :</p>
-          <button>{moveDownButton.key}</button>
+
+        <div className="mx-auto w-75">
+          <div className="col text-center">Bajar la pieza :</div>
+          <ModalControls
+            modalName="moveDownModal"
+            searchedKey="moveDownButton"
+            text="DESPLAZAR PIEZA ABAJO"
+          />
         </div>
-        <div>
-          <p>Pause (Solo funciona en solitario):</p>
-          <button>{pauseButton.key}</button>
+
+        <div className="mx-auto w-75">
+          <div className="col text-center">Pause (Solo funciona en solitario):</div>
+          <ModalControls
+            modalName="pauseModal"
+            searchedKey="pauseButton"
+            text="PAUSAR (SOLO FUNCIONA EN MODO UN JUGADOR)"
+          />
         </div>
+
       </div>
     </>
   );
