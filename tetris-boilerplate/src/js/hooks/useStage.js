@@ -5,8 +5,21 @@ import { createStage } from "../../gameHelpers";
 export const useStage =(player , resetPlayer)=>{
 //Inicia el tablero limpio
 const [stage , setStage] = useState(createStage())
-
+const [rowsCleared, setRowsCleared] = useState(0);
 useEffect(()=>{
+  
+  const sweepRows = newStage =>
+  newStage.reduce((ack, row) => {
+    if (row.findIndex(cell => cell[0] === 0) === -1) {
+      setRowsCleared(prev => prev + 1);
+      ack.unshift(new Array(newStage[0].length).fill([0, 'clear']));
+      return ack;
+    }
+    ack.push(row);
+    return ack;
+  }, [])
+
+
     const updateStage = prevStage => {
         // First flush the stage
         const newStage = prevStage.map(row =>
@@ -24,14 +37,17 @@ useEffect(()=>{
               }
             });
           });
+          if (player.collided) {
+            resetPlayer();
           
+          }   
       
      
       return newStage;
     };
     
   setStage(prev => updateStage(prev));
-  }, [player]);
+  },[player, resetPlayer]);
     
-      return [stage, setStage];
+  return [stage, setStage, rowsCleared];
     };

@@ -20,46 +20,51 @@ const Tetris = () => {
     const [gameOver, setGameOver]= useState(false);
     
     //desestructuramos 
-    const [player , updatePlayerPos , resetPlayer] = usePlayer();
+    const [player, updatePlayerPos, resetPlayer, playerRotate] = usePlayer();
     //Estado de juego para ese jugador
-    const [stage , setStage] = useStage(player);
+    const [stage, setStage] = useStage(player, resetPlayer);
 
   
   //coje la direccion
   const movePlayer = dir => {
       //si no chocamos hace el movimiento y si es asi no hace nada
-    if (!checkCollision(player, stage, { x: dir, y: 0 })) {
-      updatePlayerPos({ x: dir, y: 0 });
-    }
-  }
-//funcion para el boton de start
-  const startGame = () => {
-    console.log("test")
-    // Reset everything
-    setStage(createStage());
-    resetPlayer();
-    setGameOver(false);
-  }
-
-  const drop = () => {
-    if (!checkCollision(player, stage, { x: 0, y: 1 })) {
-      updatePlayerPos({ x: 0, y: 1, collided: false })
-    } else {
-      // Game Over
-      if (player.pos.y < 1) {
-        console.log("GAME OVER!!!");
-        setGameOver(true);
-        setDropTime(null);
+      if (!checkCollision(player, stage, { x: dir, y: 0 })) {
+        updatePlayerPos({ x: dir, y: 0 });
       }
-      updatePlayerPos({ x: 0, y: 0, collided: true });
-    }
-  }
-
+    };
   
+//funcion para el boton de start
+const startGame = () => {
+  // Reset everything
+  setStage(createStage());
+  setDropTime(1000);
+  resetPlayer();
+  setGameOver(false);
+};
+
+const drop = () => {
+  if (!checkCollision(player, stage, { x: 0, y: 1 })) {
+    updatePlayerPos({ x: 0, y: 1, collided: false });
+  } else {
+    // Game Over
+    if (player.pos.y < 1) {
+      console.log('GAME OVER!!!');
+      setGameOver(true);
+      setDropTime(null);
+    }
+    updatePlayerPos({ x: 0, y: 0, collided: true });
+  }
+};
+
+
+
+
 
   const dropPlayer = () => {
+    console.log("interval off")
+    setDropTime(null);
     drop();
-  }
+  };
 
   const move = ({ keyCode }) => {
     if (!gameOver) {
@@ -69,9 +74,10 @@ const Tetris = () => {
         movePlayer(1); //mueve a la derecha
       } else if (keyCode === 40) {
         dropPlayer(); //mueve hacia abajo
+      }else if (keyCode === 38) {
+        playerRotate(stage, 1);
       }
     }
-  
   };
 
 
