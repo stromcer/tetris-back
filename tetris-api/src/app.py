@@ -11,10 +11,14 @@ app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db"
 db.init_app(app)
 
-# Usando socketIO
-
+# Configuracion socketIO
 app.config["SECRET_KEY"] ='secret'
 socketio = SocketIO(app)
+
+@socketio.on('message')
+def handleMessage(msg):
+    print("Message: " + msg)
+    send(msg, broadcast = True)
 
 # Creamos las tablas de la BBDD (Si no estan creadas)
 with app.app_context():

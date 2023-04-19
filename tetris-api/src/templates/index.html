@@ -8,5 +8,28 @@
 </head>
 <body>
     <h1>Este es el chat</h1>
+    <ul id="messages"></ul>
+    <input type="text" id="myMessage">
+    <button type="button" id="send">send</button>
+
+    <!---Jquery-->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <!--SocketIo-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.js"></script>
+    <script>
+        const socket = io()
+
+        // socket.emit('message','hello');
+
+        socket.on('message', (msg) => {
+            $('#messages').append('<li>' + msg + '</li>')
+        })
+
+        $('#send').on('click', () => {
+            socket.send($('#myMessage').val());
+            $('#myMessage').val('');
+        })
+        
+    </script>
 </body>
 </html>
