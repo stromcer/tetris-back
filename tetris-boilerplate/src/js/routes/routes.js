@@ -14,10 +14,6 @@ const routes = [
     element: <Home />
   },
   {
-    path:"/options",
-    element:<Options />
-  },
-  {
     path:"/login",
     element:<Login />
   },
@@ -30,8 +26,15 @@ const routes = [
     element:<Instrucciones />
   },
   {
-    path:"/controles",
-    element:<Controls/>
+    path:"/options/",
+    children:[{
+        path: "/options/",
+        element: <Options />
+      },
+      {
+        path:"/options/controls",
+        element:<Controls/>
+      }]
   }
 ]
 
