@@ -13,7 +13,7 @@ useEffect(()=>{
           row.map(cell => (cell[1] === 'clear' ? [0, 'clear'] : cell)),
         );
   
-        //saca la pieza con la forma que corresponda y le pone un valor si no es 0
+        
         player.tetromino.forEach((row, y) => {
             row.forEach((value, x) => {
               if (value !== 0) {
@@ -25,16 +25,13 @@ useEffect(()=>{
             });
           });
           
-          // Then check if we collided
-      if (player.collided) {
-        resetPlayer();
-        
-      }
+      
+     
       return newStage;
     };
     
-        setStage(prev => updateStage(prev));
-      }, [player]);
+  setStage(prev => updateStage(prev));
+  }, [player]);
     
       return [stage, setStage];
     };

@@ -13,16 +13,16 @@ export const createStage = () =>
     for (let y = 0; y < player.tetromino.length; y += 1) {
       for (let x = 0; x < player.tetromino[y].length; x += 1) {
         // Comprueba que estamos en una celda Tetromino reall
-        
         if (player.tetromino[y][x] !== 0) {
+          if (
         //Comprobar que nuestro movimiento está dentro de la altura de las áreas de juego (y)
-        // No debemos pasar por el fondo del área de juego
-            if (!stage[y + player.pos.y + moveY] ||
+        // No debemos pasar por el fondo del área de juego 
+            !stage[y + player.pos.y + moveY] ||
             // Comprueba que nuestra jugada está dentro del ancho de las áreas de juego (x)
             !stage[y + player.pos.y + moveY][x + player.pos.x + moveX] ||
             // Verifique que la celda a la que se está moviendo no esté configurada para borrar
-            stage[y + player.pos.y + moveY][x + player.pos.x + moveX][1] !==
-              'clear'
+            stage[y + player.pos.y + moveY][x + player.pos.x + moveX][1]!=='clear'
+      
           ) {
             return true;
           }

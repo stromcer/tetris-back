@@ -14,11 +14,14 @@ export const usePlayer=()=>{
  })
 
 const updatePlayerPos =({ x , y , collided})=>{
-setPlayer(prev => ({
+//posicion de la pieza actualizada
+  setPlayer(prev => ({
 ...prev ,
-pos :{ x : (prev.pos.x += x) , y: (prev.pos.y += y)},collided, }))
+pos: { x : (prev.pos.x += x) , y: (prev.pos.y += y)},
+collided, }))
 }
 
+//se usa useColback para no entrar en un bucle infinito una vez usemos useinterval
 const resetPlayer = useCallback(() => {
     setPlayer({
       pos: { x: STAGE_WIDTH / 2 - 2, y: 0 },
