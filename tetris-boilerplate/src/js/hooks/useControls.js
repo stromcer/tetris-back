@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import getStoredControls from "../utils/getStoredControls";
 
 const useControls = () => {
     const [modalsShows, setModalsShows] = useState({
@@ -10,38 +11,19 @@ const useControls = () => {
     })
 
 
-    const [ buttonsMap, setButtonsMap ] = useState({
-        rotateButton: {
-        "key": "ArrowUp",
-        "keyCode": 38,
-        "code": "ArrowUp",
-       },
-       moveLeftButton: {
-        "key": "ArrowLeft",
-        "keyCode": 37,  
-        "code": "ArrowLeft",
-       },
-       moveRightButton: {
-        "key": "ArrowRight",
-        "keyCode": 39,
-        "code": "ArrowRight",
-       },
-       moveDownButton: {
-        "key": "ArrowDown",
-        "keyCode": 40,
-        "code": "ArrowDown",
-       },
-       pauseButton: {
-        "key": "p",
-        "keyCode": 80,
-        "code": "KeyP",
-       }
-    })
-    
+    const [ buttonsMap, setButtonsMap ] = useState(getStoredControls())
 
+
+
+    useEffect(()=>{
+        localStorage.setItem("buttonsMap", JSON.stringify(buttonsMap))
+    },[buttonsMap])
+
+
+    
     const handleChangeButton = (button ,mappedKey) => setButtonsMap(prev => ({...prev, [button]: mappedKey}))
     const handleOpenModal = (modalName) => setModalsShows(prev => ({...prev, [modalName]: true}));
-    const handleCloseModal = (modalName) => setModalsShows(prev => ({...prev, [modalName]: false}));
+    const handleCloseModal = (modalName) => setModalsShows( prev => ({...prev, [modalName]: false}) ) 
 
 
     return({buttonsMap,modalsShows, handleOpenModal, handleCloseModal, handleChangeButton})
