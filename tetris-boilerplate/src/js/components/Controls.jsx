@@ -56,6 +56,12 @@ const Controls = () => {
             text="PAUSAR (SOLO FUNCIONA EN MODO UN JUGADOR)"
           />
         </div>
+        
+        <div className="mx-auto w-75">
+          <button>GUARDAR Y VOLVER</button>
+          <button> CANCELAR Y VOLVER </button>
+          <button> TECLAS PREDETERMINADAS</button>
+        </div>
 
       </div>
     </>
