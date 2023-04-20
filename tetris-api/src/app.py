@@ -1,8 +1,9 @@
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, request
 from database import db
 from admin import setup_admin
 from routes import api
-from flask_socketio import SocketIO, send
+from flask_socketio import SocketIO, emit
+from flask_cors import CORS
 
 # INICIAMOS APP
 app = Flask(__name__)
@@ -13,12 +14,32 @@ db.init_app(app)
 
 # Configuracion socketIO
 app.config["SECRET_KEY"] ='secret'
-socketio = SocketIO(app)
+CORS(app,resources={r"/*":{"origins":"*"}})
+socketio = SocketIO(app,cors_allowed_origins="*")
 
-@socketio.on('message')
-def handleMessage(msg):
-    print("Message: " + msg)
-    send(msg, broadcast = True)
+@app.route("/http-call")
+def http_call():
+    data = {'data':'This text was fetched using an HTTP call to server on render'}
+    return jsonify(data)
+
+@socketio.on("connect")
+def connected():
+    """event listener para conectarse al servidor"""
+    print(request.sid)
+    print("Un cliente se ha conectado")
+    emit("connect",{"data":f"id: {request.sid} is connected"})
+
+@socketio.on('data')
+def handle_message(data):
+    """event listener para cuando el cliente escribe un mensaje"""
+    print("data from the front end: ",str(data))
+    emit("data",{'data':data,'id':request.sid},broadcast=True)
+
+@socketio.on("disconnect")
+def disconnected():
+    """event listener para desconectarse del servidor"""
+    print("user disconnected")
+    emit("disconnect",f"user {request.sid} disconnected",broadcast=True)
 
 # Creamos las tablas de la BBDD (Si no estan creadas)
 with app.app_context():
@@ -35,10 +56,6 @@ app.register_blueprint(api, url_prefix='/api')
 def test():
     return jsonify("Hola")
 
-@app.route("/chat")
-def index():
-    return render_template('index.html')
-
 ## NO ESCRIBIR CODIGO DEBAJO DE ESTA LINEA.
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=3245, debug=True)
+    socketio.run(app, port=3245, debug=True)
