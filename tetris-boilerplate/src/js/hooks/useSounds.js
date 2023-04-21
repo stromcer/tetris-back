@@ -14,13 +14,18 @@ const useSounds = () => {
 
     Tetris_Theme.volume = useMemo(()=>{
         localStorage.setItem("BGvolume", String(volume))
+        const BGplaying = JSON.parse(localStorage.getItem("BGplaying"))
+        setMusicPlaying(BGplaying)
+
         return volume
     },[volume])
 
     
 
     const handlePlayBGMusic = () =>{
-        setMusicPlaying(res => !res)
+        setMusicPlaying(res =>{ 
+            localStorage.setItem("BGplaying", JSON.stringify(!res))
+            return !res})
         if (!musicPlaying){
             return Tetris_Theme.play()
         }

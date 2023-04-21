@@ -78,7 +78,7 @@ const Controls = () => {
           
         </div>
         
-        <div className="mx-auto my-5">
+        <div className="mx-auto my-5 opciones-controles">
           <button className="mx-5" onClick={handleExit}> VOLVER </button>
           <button className="mx-5" onClick={handleDefault}> PREDETERMINADAS </button>
         </div>
