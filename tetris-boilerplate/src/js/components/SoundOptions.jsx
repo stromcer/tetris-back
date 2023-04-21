@@ -1,18 +1,24 @@
 import React, { useEffect } from "react";
+import UseAnimations from "react-useanimations";
+import volumeAn from "react-useanimations/lib/volume";
 
 import useSounds from "../hooks/useSounds";
 
 const SoundOptions = () => {
     const { volume ,musicPlaying ,handleVolume ,handleMusicPlaying, handlePlayBGMusic } = useSounds();
 
-    useEffect(()=>{},[musicPlaying])
 
     return (
         <div>
             <div >
-             <button onClick={handlePlayBGMusic}>{musicPlaying ? "PARAR" : "REPRODUCIR"}</button>
+                <button>
+                { musicPlaying 
+                ? "Parar"
+                : "Reproducir" }
+             </button>
             </div>
             <div >
+            <UseAnimations  animation={volumeAn} size={56} />
                 <input
                 type="range"
                 min={0}

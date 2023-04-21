@@ -5,7 +5,6 @@ const Tetris_Theme = new Audio(tetrisTheme)
 
 export const getVolumeMusic = () => {
     const localVolume = localStorage.getItem("BGvolume")
-    console.log(localVolume)
     if (localVolume) return Number(localVolume)
     return 0.5
 }

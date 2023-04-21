@@ -19,9 +19,9 @@ const Controls = () => {
 
   return (
     <>
-      <div className="container controls-container border-rounded py-5 bg-white h-75">
-        <div className="my-5">
-          <h1 className="my-5"> CONTROLES </h1>
+      <div className="container controls-container border-rounded py-5 bg-white">
+        <div className="mb-5">
+          <h1 > CONTROLES </h1>
         </div>
 
         <div className="mx-auto w-75">
