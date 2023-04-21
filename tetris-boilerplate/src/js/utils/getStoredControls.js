@@ -1,8 +1,8 @@
 
 const getStoredControls = () => {
     const storedControls = localStorage.getItem("buttonsMap")
-    console.log(storedControls)
-    if ( storedControls ) return JSON.parse(storedControls)
+    
+    if ( storedControls ) return(JSON.parse(storedControls));
     
     return {
         rotateButton: {

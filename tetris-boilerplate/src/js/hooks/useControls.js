@@ -13,20 +13,26 @@ const useControls = () => {
 
     const [ buttonsMap, setButtonsMap ] = useState(getStoredControls())
 
-
+    
 
     useEffect(()=>{
-        localStorage.setItem("buttonsMap", JSON.stringify(buttonsMap))
-    },[buttonsMap])
-
-
+        setButtonsMap(getStoredControls())
+    },[modalsShows])
     
-    const handleChangeButton = (button ,mappedKey) => setButtonsMap(prev => ({...prev, [button]: mappedKey}))
-    const handleOpenModal = (modalName) => setModalsShows(prev => ({...prev, [modalName]: true}));
+    
+    const handleOpenModal = (modalName) => setModalsShows( prev => ({...prev, [modalName]: true}));
     const handleCloseModal = (modalName) => setModalsShows( prev => ({...prev, [modalName]: false}) ) 
-
-
-    return({buttonsMap,modalsShows, handleOpenModal, handleCloseModal, handleChangeButton})
+    const handleChangeButton = (button ,mappedKey) => setButtonsMap( prev => { 
+        const new_buttons = {...prev, [button]: mappedKey }
+        localStorage.setItem("buttonsMap", JSON.stringify(new_buttons))
+        return new_buttons
+        })
+    const handleRestoreDefault = () => {
+        localStorage.removeItem("buttonsMap")
+        setButtonsMap(getStoredControls())
+    }
+    
+    return({buttonsMap,modalsShows, handleOpenModal, handleCloseModal, handleChangeButton, handleRestoreDefault})
 }
 
 export default useControls;

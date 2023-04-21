@@ -15,5 +15,5 @@
 
 button{
     height: 50px;
-    width: 200px;
+    min-width: 200px;
 }
