@@ -11,6 +11,8 @@ import { StyledTetris, StyledTetrisWrapper } from './styles/StyledTetris';
 //hooks
 import { usePlayer } from '../js/hooks/usePlayer';
 import { useStage } from '../js/hooks/useStage';
+import { useInterval } from '../js/hooks/useInterval';
+import { useGameStatus } from '../js/hooks/useGameStatus';
 
 const Tetris = () => {
     
@@ -22,8 +24,8 @@ const Tetris = () => {
     //desestructuramos 
     const [player, updatePlayerPos, resetPlayer, playerRotate] = usePlayer();
     //Estado de juego para ese jugador
-    const [stage, setStage] = useStage(player, resetPlayer);
-
+    const [stage, setStage , rowCleared] = useStage(player, resetPlayer);
+  const [score, setScore, rows, setRows, level, setLevel ] = useGameStatus(rowCleared);
   
   //coje la direccion
   const movePlayer = dir => {
@@ -38,11 +40,21 @@ const startGame = () => {
   // Reset everything
   setStage(createStage());
   setDropTime(1000);
+  console.log("interval on")
   resetPlayer();
   setGameOver(false);
+  setScore(0)
+  setLevel(0)
 };
 
 const drop = () => {
+
+  // Increase level when player has cleared 10 rows
+  if (rows > (level + 1) * 10) {
+    setLevel(prev => prev + 1);
+    // Also increase speed
+    setDropTime(1000 / (level + 1) + 200);
+  }
   if (!checkCollision(player, stage, { x: 0, y: 1 })) {
     updatePlayerPos({ x: 0, y: 1, collided: false });
   } else {
@@ -57,7 +69,13 @@ const drop = () => {
 };
 
 
-
+const KeyUp=({keyCode})=>{
+  if(!gameOver){
+    if(keyCode ===40){
+      setDropTime(1000 / (level + 1) + 200)
+    }
+  }
+}
 
 
   const dropPlayer = () => {
@@ -80,21 +98,25 @@ const drop = () => {
     }
   };
 
+  useInterval(()=>{
+    drop();
+  },dropTime)
+
 
   console.log('re-render')
     return (
-    <StyledTetrisWrapper role="button" tabIndex="0" onKeyDown={e=> move(e)} >
+    <StyledTetrisWrapper role="button" tabIndex="0" onKeyDown={e=> move(e)} onKeyUp={KeyUp}>
         <StyledTetris>
       <Stage stage={stage}  />
       <aside>
 
       {gameOver?(
-        <Display gameOver={gameOver} text="Game Over"/>
+        <Display gameOver={gameOver} text1="Game Over"/>
       ): (
         <div>
-          <Display text="Score" />
-          <Display text="Rows" />
-          <Display text="Level" />
+          <Display text1="Score : " text2={score}/>
+          <Display text1="Rows : " text2={rows}/>
+          <Display text1="Level : " text2={level}/>
         </div>
 
 )}

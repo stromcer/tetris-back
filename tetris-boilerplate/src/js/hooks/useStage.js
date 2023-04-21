@@ -7,7 +7,7 @@ export const useStage =(player , resetPlayer)=>{
 const [stage , setStage] = useState(createStage())
 const [rowsCleared, setRowsCleared] = useState(0);
 useEffect(()=>{
-  
+  setRowsCleared(0);
   const sweepRows = newStage =>
   newStage.reduce((ack, row) => {
     if (row.findIndex(cell => cell[0] === 0) === -1) {
