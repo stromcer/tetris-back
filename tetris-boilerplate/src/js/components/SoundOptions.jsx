@@ -18,6 +18,7 @@ const SoundOptions = () => {
              </button>
             </div>
             <div >
+                
             <UseAnimations  animation={volumeAn} size={56} />
                 <input
                 type="range"
@@ -28,6 +29,7 @@ const SoundOptions = () => {
                 onChange={event => handleVolume(event.target.valueAsNumber)}
                 />
             </div>
+
         </div>)
 }
 
