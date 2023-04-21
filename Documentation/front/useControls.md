@@ -6,7 +6,7 @@ También tienen definidos los booleanos que nos indican si se muestran los modal
 
 **Importante**
 Durante los ejemplos que se utilizaran en esta documentación daremos por hecho que estamos en la raíz de la parte de front del proyecto  `/Tetris-Boilerplate/tetris-boilerplate/` y todas las rutas indicadas serán relativas a partir de este punto.
-
+ 
 
 ## Localización e importación
 

@@ -15,7 +15,6 @@ const ModalControls = ({ modalName, searchedKey, text }) => {
     if (!modalsShows[modalName]) return
     const {key , keyCode, code} = e;
     const new_key = {key , keyCode, code};
-    console.log(searchedKey, new_key);
     handleChangeButton(searchedKey, new_key);
     handleCloseModal(modalName);
     return

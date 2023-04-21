@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import getStoredControls from "../utils/getStoredControls";
 
 const useControls = () => {
     const [modalsShows, setModalsShows] = useState({
@@ -10,41 +11,28 @@ const useControls = () => {
     })
 
 
-    const [ buttonsMap, setButtonsMap ] = useState({
-        rotateButton: {
-        "key": "ArrowUp",
-        "keyCode": 38,
-        "code": "ArrowUp",
-       },
-       moveLeftButton: {
-        "key": "ArrowLeft",
-        "keyCode": 37,  
-        "code": "ArrowLeft",
-       },
-       moveRightButton: {
-        "key": "ArrowRight",
-        "keyCode": 39,
-        "code": "ArrowRight",
-       },
-       moveDownButton: {
-        "key": "ArrowDown",
-        "keyCode": 40,
-        "code": "ArrowDown",
-       },
-       pauseButton: {
-        "key": "p",
-        "keyCode": 80,
-        "code": "KeyP",
-       }
-    })
+    const [ buttonsMap, setButtonsMap ] = useState(getStoredControls())
+
     
 
-    const handleChangeButton = (button ,mappedKey) => setButtonsMap(prev => ({...prev, [button]: mappedKey}))
-    const handleOpenModal = (modalName) => setModalsShows(prev => ({...prev, [modalName]: true}));
-    const handleCloseModal = (modalName) => setModalsShows(prev => ({...prev, [modalName]: false}));
-
-
-    return({buttonsMap,modalsShows, handleOpenModal, handleCloseModal, handleChangeButton})
+    useEffect(()=>{
+        setButtonsMap(getStoredControls())
+    },[modalsShows])
+    
+    
+    const handleOpenModal = (modalName) => setModalsShows( prev => ({...prev, [modalName]: true}));
+    const handleCloseModal = (modalName) => setModalsShows( prev => ({...prev, [modalName]: false}) ) 
+    const handleChangeButton = (button ,mappedKey) => setButtonsMap( prev => { 
+        const new_buttons = {...prev, [button]: mappedKey }
+        localStorage.setItem("buttonsMap", JSON.stringify(new_buttons))
+        return new_buttons
+        })
+    const handleRestoreDefault = () => {
+        localStorage.removeItem("buttonsMap")
+        setButtonsMap(getStoredControls())
+    }
+    
+    return({buttonsMap,modalsShows, handleOpenModal, handleCloseModal, handleChangeButton, handleRestoreDefault})
 }
 
 export default useControls;
