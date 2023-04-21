@@ -39,6 +39,7 @@ useEffect(()=>{
           });
           if (player.collided) {
             resetPlayer();
+            return sweepRows(newStage)
           
           }   
       
