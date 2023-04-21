@@ -47,7 +47,7 @@ const updatePlayerPos =({ x , y , collided})=>{
 //posicion de la pieza actualizada
   setPlayer(prev => ({
 ...prev ,
-pos: { x : (prev.pos.x += x) , y: (prev.pos.y += y)},
+pos: { x : (prev.pos.x + x ) , y: (prev.pos.y + y)},
 collided, }))
 }
 

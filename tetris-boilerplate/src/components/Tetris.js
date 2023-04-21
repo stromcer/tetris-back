@@ -28,7 +28,7 @@ const Tetris = () => {
   //coje la direccion
   const movePlayer = dir => {
       //si no chocamos hace el movimiento y si es asi no hace nada
-      if (!checkCollision(player, stage, { x: dir, y: 0 })) {
+      if (!checkCollision(player, stage, { x:dir, y: 0})) {
         updatePlayerPos({ x: dir, y: 0 });
       }
     };
