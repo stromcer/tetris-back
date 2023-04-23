@@ -3,7 +3,6 @@ from database import db
 from admin import setup_admin
 from routes import api
 from flask_socketio import SocketIO, emit
-from flask_cors import CORS
 
 # INICIAMOS APP
 app = Flask(__name__)
@@ -13,8 +12,8 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db"
 db.init_app(app)
 
 # Configuracion socketIO
+app.debug = True
 app.config["SECRET_KEY"] ='secret'
-CORS(app,resources={r"/*":{"origins":"*"}})
 socketio = SocketIO(app,cors_allowed_origins="*")
 
 @app.route("/http-call")
@@ -38,7 +37,7 @@ def handle_message(data):
 @socketio.on("disconnect")
 def disconnected():
     """event listener para desconectarse del servidor"""
-    print("user disconnected")
+    print("El cliente se ha desconectado")
     emit("disconnect",f"user {request.sid} disconnected",broadcast=True)
 
 # Creamos las tablas de la BBDD (Si no estan creadas)
@@ -58,4 +57,4 @@ def test():
 
 ## NO ESCRIBIR CODIGO DEBAJO DE ESTA LINEA.
 if __name__ == '__main__':
-    socketio.run(app, port=3245, debug=True)
+    socketio.run(app, host="0.0.0.0", port=3245)

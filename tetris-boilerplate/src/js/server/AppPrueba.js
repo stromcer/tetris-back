@@ -1,4 +1,3 @@
-import HttpCall from "../components/HttpCall";
 import WebSocketCall from "../components/WebSocketCall";
 import { io } from "socket.io-client";
 import { useEffect, useState } from "react";
@@ -42,9 +41,6 @@ function AppPrueba() {
   return (
     <div className="App">
       <h1>React/Flask App + socket.io</h1>
-      <div className="line">
-        <HttpCall />
-      </div>
       {!buttonStatus ? (
         <button onClick={handleClick}>turn chat on</button>
       ) : (
