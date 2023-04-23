@@ -1,22 +1,38 @@
 from flask import Flask, jsonify, render_template, request
-from database import db
-from admin import setup_admin
-from routes import api
+from src.database import db
+from src.admin import setup_admin
+from src.routes import api
 from flask_socketio import SocketIO, emit
+from flask_migrate import Migrate
 
 # INICIAMOS APP
 app = Flask(__name__)
 
+# Iniciamos la blueprint "api"
+app.register_blueprint(api, url_prefix='/api')
+
+# Iniciamos el admin
+setup_admin(app)
+
 # Configuracion BBDD 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///tetrisonline.db"
 db.init_app(app)
+
+
+# Configuracion y migracion de las tablas de la BBDD (Si no estan creadas)
+migrate = Migrate(app, db)
+
 
 # Configuracion socketIO
 app.debug = True
 app.config["SECRET_KEY"] ='secret'
 socketio = SocketIO(app,cors_allowed_origins="*")
 
-@app.route("/http-call")
+
+
+
+#PARTE PARA RUTAS DE SOCKETS
+@app.route("/")
 def http_call():
     data = {'data':'This text was fetched using an HTTP call to server on render'}
     return jsonify(data)
@@ -40,20 +56,7 @@ def disconnected():
     print("El cliente se ha desconectado")
     emit("disconnect",f"user {request.sid} disconnected",broadcast=True)
 
-# Creamos las tablas de la BBDD (Si no estan creadas)
-with app.app_context():
-    db.create_all()
 
-# Iniciamos el admin
-setup_admin(app)
-
-# Iniciamos la blueprint "api"
-app.register_blueprint(api, url_prefix='/api')
-
-##PARTE PARA RUTAS
-@app.route("/")
-def test():
-    return jsonify("Hola")
 
 ## NO ESCRIBIR CODIGO DEBAJO DE ESTA LINEA.
 if __name__ == '__main__':
