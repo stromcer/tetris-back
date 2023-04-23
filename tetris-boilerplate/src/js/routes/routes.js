@@ -6,6 +6,7 @@ import Layout from "../layout/Layout";
 import Login from "../views/Login";
 import Registro from "../views/Registro";
 import Instrucciones from "../views/Instrucciones";
+import Chat from "../server/Chat";
 import Controls from "../components/Controls";
 
 const routes = [
@@ -24,17 +25,6 @@ const routes = [
   {
     path:"/instrucciones",
     element:<Instrucciones />
-  },
-  {
-    path:"/options/",
-    children:[{
-        path: "/options/",
-        element: <Options />
-      },
-      {
-        path:"/options/controls",
-        element:<Controls/>
-      }]
   }
 ]
 
