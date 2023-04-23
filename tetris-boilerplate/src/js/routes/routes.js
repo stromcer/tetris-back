@@ -25,6 +25,21 @@ const routes = [
   {
     path:"/instrucciones",
     element:<Instrucciones />
+  },
+  {
+    path:"/chat",
+    element:<Chat />
+  },
+  {
+    path:"/options/",
+    children:[{
+        path: "/options/",
+        element: <Options />
+      },
+      {
+        path:"/options/controls",
+        element:<Controls/>
+      }]
   }
 ]
 
