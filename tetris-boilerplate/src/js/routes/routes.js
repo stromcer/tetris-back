@@ -6,6 +6,7 @@ import Layout from "../layout/Layout";
 import Login from "../views/Login";
 import Registro from "../views/Registro";
 import Instrucciones from "../views/Instrucciones";
+import Chat from "../server/Chat";
 
 const routes = [
   {
@@ -27,6 +28,10 @@ const routes = [
   {
     path:"/instrucciones",
     element:<Instrucciones />
+  },
+  {
+    path:"/chat",
+    element:<Chat />
   }
 ]
 

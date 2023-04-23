@@ -2,7 +2,7 @@ import WebSocketCall from "../components/WebSocketCall";
 import { io } from "socket.io-client";
 import { useEffect, useState } from "react";
 
-function AppPrueba() {
+function Chat() {
   const [socketInstance, setSocketInstance] = useState("");
   const [loading, setLoading] = useState(true);
   const [buttonStatus, setButtonStatus] = useState(false);
@@ -55,4 +55,4 @@ function AppPrueba() {
   );
 }
 
-export default AppPrueba;
+export default Chat;
