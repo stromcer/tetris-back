@@ -1,0 +1,35 @@
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    color: #108891;
+    font-size: 16px;
+    text-align: justify;
+}
+
+li {
+    font-size: 18px;
+    line-height: 24px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 22px;
+    padding-right: 22px;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    font-weight: 400;
+}
+
+a {
+    padding: 10px 0;
+    display: block;
+    color: #108891;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+h2 {
+    text-align: center;
+}

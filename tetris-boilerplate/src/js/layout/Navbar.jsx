@@ -1,7 +1,7 @@
 import React from "react";
 import Nav from "react-bootstrap/Nav";
 import BootstrapNavbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
+// import NavDropdown from "react-bootstrap/NavDropdown";
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
@@ -19,7 +19,7 @@ const Navbar = () => {
               <NavLink to="/options">Opciones</NavLink>
             </Nav.Item>
             <Nav.Item>
-              <NavLink to="/instrucciones">Instrucciones de Juego</NavLink>
+              <NavLink to="/acercaDe">Acerca De</NavLink>
             </Nav.Item>
           </div>
           <div className="d-flex">

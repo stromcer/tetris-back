@@ -1,0 +1,18 @@
+.button {
+    background-color: #226D85 ;
+}
+
+.container {
+    background-color: #3D4A4F ;
+    color: white;
+}
+
+.passwordForgot {
+    color: #0bc999;
+    cursor: pointer;
+}
+
+input.form-control {
+    width: 50%;
+}
+
