@@ -11,6 +11,7 @@ flask-admin = "*"
 flask-socketio = "*"
 flask-cors = "*"
 flask-migrate = "*"
+bcrypt = "*"
 
 [dev-packages]
 
