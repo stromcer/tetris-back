@@ -4,6 +4,8 @@ from src.admin import setup_admin
 from src.routes import api
 from flask_socketio import SocketIO, emit
 from flask_migrate import Migrate
+from flask_jwt_extended import JWTManager
+
 
 # INICIAMOS APP
 app = Flask(__name__)
@@ -23,10 +25,17 @@ db.init_app(app)
 migrate = Migrate(app, db)
 
 
+# Setup the Flask-JWT-Extended extension
+app.config["JWT_SECRET_KEY"] = "super-secret"  # Change this!
+jwt = JWTManager(app)
+
+
+
 # Configuracion socketIO
 app.debug = True
 app.config["SECRET_KEY"] ='secret'
 socketio = SocketIO(app,cors_allowed_origins="*")
+
 
 
 

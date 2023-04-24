@@ -1,7 +1,9 @@
 from flask import Flask, request, jsonify, url_for, Blueprint
-from src.database import db, User
+from src.database import User
 from src.utils.routes.create_user import create_user
-
+from src.utils.routes.user_login import user_login
+from src.utils.routes.get_private_info import get_private_info_by_id
+from flask_jwt_extended import jwt_required , create_access_token, get_jwt_identity
 
 
 
@@ -36,16 +38,25 @@ def singup():
 def login():
     try:
         request_body = request.json
-        user = User.query.filter_by(email=request_body["email"]).first()
+        response = user_login(request_body)
+        return response
         
-        if user == None and not user.check_password(request_body["password"]):
-            return jsonify({"message":"user / password missmatch","code":"missmatch"}),404
-        else:
-            response = user.serialize()
-            return jsonify(response),201
-        
-    except KeyError as e:
+    except KeyError as e:   
         if  "email" in e.__repr__():
             return jsonify({"message":"Missing email","code":"email"}),400
         elif "password" in e.__repr__():
             return jsonify({"message":"Missing password","code":"password"}),400
+        
+@api.route("/user/info", methods=["GET"])
+@jwt_required()
+def user_info():
+    token_info = get_jwt_identity()
+    response = get_private_info_by_id(token_info["id"])
+    return jsonify(response)
+
+@api.route("/user/list", methods=["GET"])
+@jwt_required()
+def get_user_list():
+    users = User.query.all()
+    response = [ user.serialize() for user in users ]
+    return jsonify({"message":"ok","data":response}),200

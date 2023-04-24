@@ -23,9 +23,14 @@ class User(db.Model):
         return {
             "id": self.id,
             "nickname":self.nickname,
-            "email":self.email
+            "email":self.email,
+            "name": self.name
         }
+    
+    def get_highscore(self):
+        highscore = Score.query.filter_by(user_id=self.id).order_by(Score.total_score.desc()).first().serialize()
         
+        return highscore
         
 class Score(db.Model):
     id = db.Column(db.Integer, primary_key=True) 
@@ -44,5 +49,5 @@ class Score(db.Model):
     def serialize(self):
         return {
             "user_id":self.user_id,
-            "score": self.score
+            "total_score": self.total_score
         }

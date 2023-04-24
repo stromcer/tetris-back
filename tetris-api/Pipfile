@@ -12,6 +12,7 @@ flask-socketio = "*"
 flask-cors = "*"
 flask-migrate = "*"
 bcrypt = "*"
+eventlet = "*"
 
 [dev-packages]
 
