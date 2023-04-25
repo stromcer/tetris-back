@@ -1,7 +1,3 @@
-.button {
-    background-color: #226D85 ;
-}
-
 .container {
     background-color: #3D4A4F ;
     color: white;
@@ -13,6 +9,6 @@
 }
 
 input.form-control {
-    width: 50%;
+    width: 70%;
 }
 

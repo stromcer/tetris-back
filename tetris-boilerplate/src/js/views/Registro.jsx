@@ -15,9 +15,7 @@ const Registro = () => {
             <Form.Label className="mt-4">Introduzca de nuevo la contraseña:</Form.Label>
             <Form.Control type="password" placeholder="Enter password again"/>
           </Form.Group>
-          <button className="button m-3" type="submit">
-            Registrarse
-          </button>
+          <button type="button" className="nes-btn is-primary m-3">Registrarse</button>
         </Form>
     );
 };

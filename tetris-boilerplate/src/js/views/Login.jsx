@@ -18,9 +18,7 @@ const Login = () => {
             <Form.Control type="password" placeholder="Password" />
           </Form.Group>
           <div className="col-12">
-            <button className="button m-3" type="submit">
-              Iniciar sesion
-            </button>
+            <button type="button" className="nes-btn is-primary m-3">Iniciar sesion</button>
             <a className="passwordForgot btn" href="http://">
               Forgot your password?
             </a>

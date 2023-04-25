@@ -1,11 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../styles/acercaDe.css"
+import "../styles/AcercaDe/acercaDe.css"
 
 const AcercaDe = () => {
     return(
-        <div className="container col-6">
-            <div>
+        <div className="indice-cont nes-container is-rounded is-dark col-6">
                 <ul>
                     <li>
                         <h2 className="mt-3">Indice</h2>
@@ -14,7 +13,7 @@ const AcercaDe = () => {
                         <Link to="/acercaDe/queEsTetris">¿Qué es Tetris?</Link>
                     </li>
                     <li>
-                         <Link to="/acercaDe/instrucciones">Como jugar Tetris: paso a paso</Link>
+                        <Link to="/acercaDe/instrucciones">Como jugar Tetris: paso a paso</Link>
                      </li>
                     <li>
                         <Link to="/acercaDe/jugarOnline">Jugar Online</Link>
@@ -25,14 +24,12 @@ const AcercaDe = () => {
                     <li>
                         <Link to="/acercaDe/sobreNosotros">Sobre Nosotros</Link>
                     </li>
-                    <li>
-                        <Link to="/acercaDe/soporte">¿Algun inconveniente con Tetris?, ponte en contacto con nosotros</Link>
+                    <li className="mb-3">
+                        <Link to="/acercaDe/soporte">Ayuda</Link>
                     </li>
                 </ul>
-            </div>
         </div>
-        
-    )
-}
+    );
+};
 
 export default AcercaDe;

@@ -1,9 +1,13 @@
 import React from "react";
-import "../../styles/acercaDe.css"
+import "../../styles/AcercaDe/instrucciones.css"
+import { useNavigate } from "react-router-dom";
 
 const Instrucciones = () => {
+
+    const navigate = useNavigate()
+
     return(
-        <div className="container">
+        <div className="nes-container col-10 is-dark with-title d-flex mt-3">
             <ul className="me-5"> 
                 <ol>
                     <h3 className="mb-4 mt-3">Instrucciones para jugar al Tetris:</h3>
@@ -34,6 +38,9 @@ const Instrucciones = () => {
                         existe un pequeño truco que es pulsar el botón del giro de forma constante para que la pieza se pueda seguir moviendo,
                         hay que tocar deprisa el botón para evitar que se caiga, como siempre evita que se creen espacios y aguanta.
                     </p>
+                </ol>
+                <ol className="d-flex justify-content-end">
+                    <button type="button" className="nes-btn is-error" onClick={() => navigate("/acercaDe")}>Volver</button>
                 </ol>
             </ul>
         </div>
