@@ -7,7 +7,7 @@ const Login = () => {
     return (
         <Form className="login-styles nes-container is-rounded is-dark col-5">
           <Form.Group className="m-3">
-            <h3 className="h3-styles">Login</h3>
+            <h3>Login</h3>
           </Form.Group>
           <Form.Group className="m-3" controlId="formBasicEmail">
             <Form.Label>Email</Form.Label>
