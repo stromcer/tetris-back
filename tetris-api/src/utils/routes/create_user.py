@@ -10,6 +10,7 @@ def create_user(body):
         password = hashed_password,
         is_active = False
         )
+    
     db.session.add(user)
     db.session.commit()
     

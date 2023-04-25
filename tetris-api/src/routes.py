@@ -3,7 +3,9 @@ from src.database import User
 from src.utils.routes.create_user import create_user
 from src.utils.routes.user_login import user_login
 from src.utils.routes.get_private_info import get_private_info_by_id
-from flask_jwt_extended import jwt_required , create_access_token, get_jwt_identity
+from src.utils.routes.create_score import create_score
+from src.utils.routes.get_user_scores import get_user_scores_by_id
+from flask_jwt_extended import jwt_required , get_jwt_identity
 
 
 
@@ -34,7 +36,7 @@ def singup():
         return jsonify({"message":"Email or nickname already exists","code":"email / nickname"}),403
     
     
-@api.route("/login", methods=["POST"])
+@api.route("/login/", methods=["POST"])
 def login():
     try:
         request_body = request.json
@@ -49,7 +51,7 @@ def login():
         
 @api.route("/user/info", methods=["GET"])
 @jwt_required()
-def user_info():
+def get_user_info():
     token_info = get_jwt_identity()
     response = get_private_info_by_id(token_info["id"])
     return jsonify(response)
@@ -60,3 +62,19 @@ def get_user_list():
     users = User.query.all()
     response = [ user.serialize() for user in users ]
     return jsonify({"message":"ok","data":response}),200
+
+@api.route("/user/newscore", methods=["POST"])
+@jwt_required()
+def new_score_user():
+    user_info = get_jwt_identity()
+    new_score = request.json
+    response = create_score(user_info["id"], new_score)
+    return jsonify({"message":"ok","data":response}),200
+
+@api.route("/user/scores", methods=["GET"])
+@jwt_required()
+def get_scores():
+    user_info = get_jwt_identity()
+    response = get_user_scores_by_id(user_info["id"])
+    return jsonify({"message":"ok"}),200
+

@@ -48,6 +48,10 @@ class Score(db.Model):
     
     def serialize(self):
         return {
-            "user_id":self.user_id,
-            "total_score": self.total_score
+            "id":self.id,
+            "total_score": self.total_score,
+            "game_date": self.game_date,
+            "broken_rows": self.broken_rows,
+            "reached_level": self.reached_level,
+            "time": self.time,
         }

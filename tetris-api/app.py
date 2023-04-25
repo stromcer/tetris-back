@@ -46,6 +46,7 @@ def http_call():
     data = {'data':'This text was fetched using an HTTP call to server on render'}
     return jsonify(data)
 
+
 @socketio.on("connect")
 def connected():
     """event listener para conectarse al servidor"""
@@ -53,18 +54,19 @@ def connected():
     print("Un cliente se ha conectado")
     emit("connect",{"data":f"id: {request.sid} is connected"})
 
+
 @socketio.on('data')
 def handle_message(data):
     """event listener para cuando el cliente escribe un mensaje"""
     print("data from the front end: ",str(data))
     emit("data",{'data':data,'id':request.sid},broadcast=True)
 
+
 @socketio.on("disconnect")
 def disconnected():
     """event listener para desconectarse del servidor"""
     print("El cliente se ha desconectado")
     emit("disconnect",f"user {request.sid} disconnected",broadcast=True)
-
 
 
 ## NO ESCRIBIR CODIGO DEBAJO DE ESTA LINEA.
