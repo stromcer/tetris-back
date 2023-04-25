@@ -1,4 +1,4 @@
-import WebSocketCall from "../components/WebSocketCall";
+import WebSocketCall from "./WebSocketCall";
 import { io } from "socket.io-client";
 import { useEffect, useState } from "react";
 

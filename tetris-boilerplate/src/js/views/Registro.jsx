@@ -5,7 +5,7 @@ import "../styles/registro.css"
 
 const Registro = () => {
     return(
-        <Form className="container col-6">
+        <Form className="registro-styles nes-container is-rounded is-dark col-6">
           <Form.Group className="m-3" controlId="formBasicEmail">
             <h3>Formulario de Registro</h3>
             <Form.Label className="mt-3">Introduce una direccion de correo:</Form.Label>

@@ -6,7 +6,7 @@ import Layout from "../layout/Layout";
 import Login from "../views/Login";
 import Registro from "../views/Registro";
 import Instrucciones from "../components/AcercaDe/Instrucciones";
-import Chat from "../server/Chat";
+import Chat from "../components/Chat";
 import Controls from "../components/Controls";
 import AcercaDe from "../views/AcercaDe";
 import QueEsTetris from "../components/AcercaDe/QueEsTetris";
