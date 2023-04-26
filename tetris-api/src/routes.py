@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, url_for, Blueprint
-from src.database import User
+from src.database import User, Score
 from src.utils.routes.create_user import create_user
 from src.utils.routes.user_login import user_login
 from src.utils.routes.get_private_info import get_private_info_by_id
@@ -76,5 +76,13 @@ def new_score_user():
 def get_scores():
     user_info = get_jwt_identity()
     response = get_user_scores_by_id(user_info["id"])
-    return jsonify({"message":"ok"}),200
+    return jsonify({"message":"ok","data":response}),200
 
+@api.route("/leaderboard", methods=["GET"])
+def get_leaderboard():
+    scores = Score.query.order_by(Score.total_score.desc()).distinct().group_by(Score.user_id).limit(10).all()
+    
+    response = [ score.serialize() for score in scores ]    
+    
+    
+    return jsonify({"message":"ok","data":response}),200
