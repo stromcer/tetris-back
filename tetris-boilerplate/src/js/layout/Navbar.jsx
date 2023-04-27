@@ -13,7 +13,7 @@ const Navbar = () => {
         <Nav className="me-auto d-flex justify-content-between w-100">
           <div className="d-flex">
             <Nav.Item>
-              <NavLink to="/">Jugar</NavLink>
+              <NavLink to="/jugar">Jugar</NavLink>
             </Nav.Item>
             <Nav.Item>
               <NavLink to="/options">Opciones</NavLink>

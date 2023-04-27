@@ -2,7 +2,7 @@ import WebSocketCall from "./WebSocketCall";
 import { io } from "socket.io-client";
 import { useEffect, useState } from "react";
 
-function Chat() {
+const Chat = () => {
   const [socketInstance, setSocketInstance] = useState("");
   const [loading, setLoading] = useState(true);
   const [buttonStatus, setButtonStatus] = useState(false);
@@ -38,7 +38,7 @@ function Chat() {
   }, [buttonStatus]);
 
   return (
-    <div className="App">
+    <div className="Chat">
       <h1>React/Flask App + socket.io</h1>
       {!buttonStatus ? (
         <button onClick={handleClick}>turn chat on</button>

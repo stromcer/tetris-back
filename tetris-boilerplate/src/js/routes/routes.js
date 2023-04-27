@@ -14,6 +14,9 @@ import JugarOnline from "../components/AcercaDe/JugarOnline";
 import PreguntasFrecuentes from "../components/AcercaDe/PreguntasFrecuentes";
 import SobreNosotros from "../components/AcercaDe/SobreNosotros";
 import Soporte from "../components/AcercaDe/Soporte";
+import Jugar from "../views/Jugar";
+import Multiplayer from "../components/Jugar/Multiplayer";
+import Singleplayer from "../components/Jugar/Singleplayer";
 
 
 const routes = [
@@ -58,6 +61,21 @@ const routes = [
     {
       path:"/acercaDe/soporte",
       element:<Soporte />
+    }]
+  },
+  {
+    path: "/jugar/",
+    children:[{
+      path: "/jugar/",
+      element: <Jugar />
+    },
+    {
+      path: "/jugar/multiplayer",
+      element: <Multiplayer />
+    },
+    {
+      path: "/jugar/singleplayer",
+      element: <Singleplayer />
     }]
   },
   {

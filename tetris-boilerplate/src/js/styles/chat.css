@@ -1,0 +1,10 @@
+.container-chat.nes-container {
+    border-radius: 10px;
+    width: 29rem;
+    height: 28rem;
+    display: flex;
+}
+
+.input-button-styles {
+    margin-top: 24rem;
+}

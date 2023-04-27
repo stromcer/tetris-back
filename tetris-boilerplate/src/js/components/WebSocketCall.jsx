@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import "../styles/chat.css"
 
 const WebSocketCall = ({ socket }) => {
   const [message, setMessage] = useState("");
@@ -35,15 +36,16 @@ const WebSocketCall = ({ socket }) => {
   }, [socket, messages]);
 
   return (
-    <div>
-      <h2>WebSocket Communication</h2>
-      <input type="text" value={message} onChange={handleText} onKeyDown={handleKeyDown} />
-      <button onClick={handleSubmit}>send</button>
-      <ul className="text-danger">
-        {messages.map((message, ind) => {
-          return <li key={ind}>{message}</li>;
-        })}
-      </ul>
+    <div className="container-chat nes-container is-dark">
+      <div className="input-button-styles">
+        <input type="text" value={message} onChange={handleText} onKeyDown={handleKeyDown} />
+        <button className="bg-primary" type="button" onClick={handleSubmit}>enviar</button>
+        <ul className="text-danger">
+          {messages.map((message, ind) => {
+            return <li key={ind}>{message}</li>;
+          })}
+        </ul>
+      </div>
     </div>
   );
 }
