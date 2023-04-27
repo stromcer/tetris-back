@@ -39,7 +39,6 @@ const Chat = () => {
 
   return (
     <div className="Chat">
-      <h1>React/Flask App + socket.io</h1>
       {!buttonStatus ? (
         <button onClick={handleClick}>turn chat on</button>
       ) : (

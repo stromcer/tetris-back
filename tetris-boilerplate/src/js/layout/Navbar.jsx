@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom";
 const Navbar = () => {
   return (
     <BootstrapNavbar className="navbar-style px-5" expand="lg" variant="dark">
-      <BootstrapNavbar.Brand href="#home">Tetris Online</BootstrapNavbar.Brand>
+      <BootstrapNavbar.Brand href="/">Tetris Online</BootstrapNavbar.Brand>
       <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" />
       <BootstrapNavbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto d-flex justify-content-between w-100">
