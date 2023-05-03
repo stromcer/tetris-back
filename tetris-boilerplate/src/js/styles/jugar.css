@@ -1,7 +1,8 @@
 .jugar-styles {
-    width: 28rem;
-    height: 35rem;
+    width: 47rem;
+    height: 34rem;
     display: grid;
     justify-content: center;
     border-radius: 5px;
+    background-image: url("https://p4.wallpaperbetter.com/wallpaper/175/454/387/tetris-video-games-wallpaper-preview.jpg");
 }

@@ -19,18 +19,18 @@ const Login = () => {
             <Form.Control name="email" value={userTextInputs["email"]} onChange={handleTextChangeInputs} type="email" placeholder="Enter email" />
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Group className="m-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control name="password" value={userTextInputs["password"]} onChange={handleTextChangeInputs} type="password" placeholder="Password" />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Group className="m-3" controlId="formBasicPassword">
             <Form.Check name="remember" value={true} onChange={handleChecksChangeInputs} type="checkbox" label="Remember me" />
 
           </Form.Group>
           <div className="col-12">
             <button type="button" className="nes-btn is-primary m-3">Iniciar sesion</button>
             <a className="passwordForgot btn" href="http://">
-              ¿Olvidaste tu contrasña?¿
+              ¿Olvidaste tu contraseña?
             </a>
           </div>
         </Form>

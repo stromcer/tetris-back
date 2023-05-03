@@ -5,7 +5,7 @@ import "../styles/jugar.css"
 
 const Jugar = () => {
     return(
-        <div className="jugar-styles nes-container is-dark mt-5">
+        <div className="jugar-styles container mt-5">
             <Link to="/jugar/singleplayer">
                 <Button>Singleplayer</Button>
             </Link>
