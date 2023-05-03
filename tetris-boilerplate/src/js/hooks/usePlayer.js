@@ -1,7 +1,9 @@
 import { useCallback, useState } from "react";
-import { TETROMINOS, randomTetromino } from "../../components/tetrominos";
-import { STAGE_WIDTH } from "../../gameHelpers";
-import { checkCollision } from "../../gameHelpers";
+import { TETROMINOS, randomTetromino } from "../components/Tetris/Tetrominos";
+import { STAGE_WIDTH } from "../utils/gameHelpers";
+import { checkCollision } from "../utils/gameHelpers";
+
+
 export const usePlayer=()=>{
 
 //Estado inicial del jugador
