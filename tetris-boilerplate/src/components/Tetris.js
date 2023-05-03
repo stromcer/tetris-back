@@ -25,7 +25,7 @@ const Tetris = () => {
     const [player, updatePlayerPos, resetPlayer, playerRotate] = usePlayer();
     //Estado de juego para ese jugador
     const [stage, setStage , rowCleared] = useStage(player, resetPlayer);
-  const [score, setScore, rows, setRows, level, setLevel ] = useGameStatus(rowCleared);
+    const [score, setScore, rows, setRows, level, setLevel ] = useGameStatus(rowCleared);
   
   //coje la direccion
   const movePlayer = dir => {
@@ -71,7 +71,7 @@ const drop = () => {
 
 const KeyUp=({keyCode})=>{
   if(!gameOver){
-    if(keyCode ===40){
+    if(keyCode === 40){
       setDropTime(1000 / (level + 1) + 200)
     }
   }

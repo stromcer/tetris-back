@@ -5,10 +5,13 @@
 
 body {
   margin: 0;
-  font-family: Unibody;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: url("https://static.vecteezy.com/system/resources/thumbnails/007/278/160/small/polygon-geometric-design-abstract-technology-concept-abstract-blue-light-background-vector.jpg");
+}
+
+body * {
+  font-family: Unibody;
 }
 
 .nav-item a{

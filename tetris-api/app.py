@@ -18,7 +18,7 @@ setup_admin(app)
 
 # Configuracion BBDD 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///tetrisonline.db"
-db.init_app(app)
+db.init_app(app) 
 
 
 # Configuracion y migracion de las tablas de la BBDD (Si no estan creadas)
@@ -35,9 +35,6 @@ jwt = JWTManager(app)
 app.debug = True
 app.config["SECRET_KEY"] ='secret'
 socketio = SocketIO(app,cors_allowed_origins="*")
-
-
-
 
 
 #PARTE PARA RUTAS DE SOCKETS

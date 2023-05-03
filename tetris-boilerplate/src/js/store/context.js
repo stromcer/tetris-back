@@ -1,20 +1,15 @@
-import React, { createContext, useContext, useState, useEffect } from "react"
+import React, { createContext, useContext } from "react"
 import Tetris_Theme from "../utils/tetris_theme.js"
 
 const Context = createContext()
 
 export const ContextProvider = ({children}) => {
-
-
-    const [test,setTest] = useState("Vacio")
-    
+ 
     const handleTheme = () => {
         Tetris_Theme.play()
     }
 
-    const store = {
-        test
-    }
+    const store = {}
 
     const actions = {
         handleTheme

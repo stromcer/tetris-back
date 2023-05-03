@@ -1,7 +1,6 @@
 import { useState , useEffect} from "react";
 import { createStage } from "../../gameHelpers";
 
-
 export const useStage =(player , resetPlayer)=>{
 //Inicia el tablero limpio
 const [stage , setStage] = useState(createStage())
