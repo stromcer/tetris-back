@@ -5,9 +5,9 @@ const Context = createContext()
 
 export const ContextProvider = ({children}) => {
 
-    const [musicOn,SetMusicOn] = useState(false)
-    const [test,setTest] = useState("Vacio")
 
+    const [test,setTest] = useState("Vacio")
+    
     const handleTheme = () => {
         Tetris_Theme.play()
     }
