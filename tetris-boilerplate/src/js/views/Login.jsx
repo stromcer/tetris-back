@@ -1,10 +1,10 @@
 import React from "react";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import useLogin from "../hooks/useLogin";
+import useFormInputs from "../hooks/useFormInputs";
 
 const Login = () => {
-  const {userTextInputs, handleTextChangeInputs, handleChecksChangeInputs}  = useLogin()
+  const {userTextInputs, handleTextChangeInputs, handleChecksChangeInputs}  = useFormInputs()
 
 
     return (

@@ -1,13 +1,16 @@
 import {useState, useCallback, useEffect} from "react"
 
 
-const useLogin = () => {
+const useFormInputs = () => {
     const [userTextInputs, setUserInputs] = useState({})
 
 
     const handleTextChangeInputs = (e) => {
+        
         setUserInputs( prev => {
+            
             const newState = { ...prev, [e.target.name] : e.target.value }
+            console.log(userTextInputs)
             return newState
         })
     }
@@ -29,4 +32,4 @@ const useLogin = () => {
 
 
 
-export default useLogin;
+export default useFormInputs;
