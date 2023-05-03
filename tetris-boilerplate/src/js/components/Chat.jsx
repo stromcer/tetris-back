@@ -5,18 +5,18 @@ import { useEffect, useState } from "react";
 const Chat = () => {
   const [socketInstance, setSocketInstance] = useState("");
   const [loading, setLoading] = useState(true);
-  const [buttonStatus, setButtonStatus] = useState(false);
+  const [connectionStatus, setConnectionStatus] = useState(true);
 
   const handleClick = () => {
-    if (buttonStatus === false) {
-      setButtonStatus(true);
+    if (connectionStatus === false) {
+      setConnectionStatus(true);
     } else {
-      setButtonStatus(false);
+      setConnectionStatus(false);
     }
   };
 
   useEffect(() => {
-    if (buttonStatus === true) {
+    if (connectionStatus === true) {
       const socket = io("84.121.62.4:3245/");
 
       setSocketInstance(socket);
@@ -35,11 +35,11 @@ const Chat = () => {
         socket.disconnect();
       };
     }
-  }, [buttonStatus]);
+  }, [connectionStatus]);
 
   return (
     <div className="Chat">
-      {!buttonStatus ? (
+      {!connectionStatus ? (
         <button onClick={handleClick}>turn chat on</button>
       ) : (
         <>

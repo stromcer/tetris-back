@@ -1,10 +1,21 @@
-.container-chat.nes-container {
-    border-radius: 10px;
-    width: 29rem;
-    height: 28rem;
-    display: flex;
+.container-chat.nes-container.is-dark {
+    border-radius: 5px;
+    width: 30rem;
+    height: 25rem;
 }
 
 .input-button-styles {
-    margin-top: 24rem;
+    margin-right: -30px;
+    margin-left: -30px;
+}
+
+.input-chat-styles {
+    width: 70%;
+    height: 28px;
+}
+
+ul#chat-box {
+    max-height: 20rem;
+    min-height: 20rem;
+    overflow-y: scroll;
 }

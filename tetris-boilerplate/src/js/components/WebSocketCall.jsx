@@ -38,13 +38,13 @@ const WebSocketCall = ({ socket }) => {
   return (
     <div className="container-chat nes-container is-dark">
       <div className="input-button-styles">
-        <input type="text" value={message} onChange={handleText} onKeyDown={handleKeyDown} />
-        <button className="bg-primary" type="button" onClick={handleSubmit}>enviar</button>
-        <ul className="text-danger">
+        <ul className="text-danger" id="chat-box">
           {messages.map((message, ind) => {
             return <li key={ind}>{message}</li>;
           })}
         </ul>
+        <input className="input-chat-styles" type="text" value={message} onChange={handleText} onKeyDown={handleKeyDown} />
+        <button className="bg-primary" type="button" onClick={handleSubmit}>ENVIAR</button>
       </div>
     </div>
   );

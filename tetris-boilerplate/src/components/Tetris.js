@@ -71,7 +71,7 @@ const drop = () => {
 
 const KeyUp=({keyCode})=>{
   if(!gameOver){
-    if(keyCode ===40){
+    if(keyCode === 40){
       setDropTime(1000 / (level + 1) + 200)
     }
   }

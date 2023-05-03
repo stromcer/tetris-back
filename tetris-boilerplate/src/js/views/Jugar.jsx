@@ -17,4 +17,4 @@ const Jugar = () => {
     );
 };
 
-export default Jugar;
+export default Jugar; 
