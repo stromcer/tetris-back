@@ -1,18 +1,17 @@
 import React, {useState} from 'react';
-import { createStage } from '../gameHelpers';
 // Components
-import Stage from './Stage';
-import Display from './Display';
-import StartButton from './StartButton';
-import { checkCollision } from '../gameHelpers';
+import Stage from './Stage.jsx';
+import Display from './Display.jsx';
+import StartButton from './StartButton.jsx';
+import { checkCollision ,createStage} from '../../utils/gameHelpers';
 //Stylos componentes
 import { StyledTetris, StyledTetrisWrapper } from './styles/StyledTetris';
 
 //hooks
-import { usePlayer } from '../js/hooks/usePlayer';
-import { useStage } from '../js/hooks/useStage';
-import { useInterval } from '../js/hooks/useInterval';
-import { useGameStatus } from '../js/hooks/useGameStatus';
+import { usePlayer } from '../../hooks/usePlayer';
+import { useStage } from '../../hooks/useStage';
+import { useInterval } from '../../hooks/useInterval';
+import { useGameStatus } from '../../hooks/useGameStatus';
 
 const Tetris = () => {
     
