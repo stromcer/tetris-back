@@ -1,6 +1,5 @@
 import React from "react";
 import { createBrowserRouter } from "react-router-dom";
-import Home from "../views/Home";
 import Options from "../views/Options";
 import Layout from "../layout/Layout";
 import Login from "../views/Login";
@@ -22,7 +21,7 @@ import Singleplayer from "../components/Jugar/Singleplayer";
 const routes = [
   {
     path: "/",
-    element: <Home />
+    element: <Jugar />
   },
   {
     path:"/login",

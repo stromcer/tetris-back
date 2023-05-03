@@ -1,5 +1,5 @@
 import React from "react";
-import Tetris from "../../../components/Tetris";
+import Tetris from "../Tetris/Tetris.jsx";
 import Chat from "../Chat";
 
 const Multiplayer = () => {
