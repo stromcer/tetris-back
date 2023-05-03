@@ -4,7 +4,7 @@ import Tetris_Theme from "../utils/tetris_theme.js"
 const Context = createContext()
 
 export const ContextProvider = ({children}) => {
-
+ 
     const handleTheme = () => {
         Tetris_Theme.play()
     }
