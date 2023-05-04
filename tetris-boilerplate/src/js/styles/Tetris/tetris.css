@@ -8,9 +8,8 @@
     min-height: 30px;
     width: 100%;
     border-radius: 20px;
-    color: '#999';
+    color: #999;
     background: #000;
-    font-family: Pixel, Arial, Helvetica, sans-serif;
     font-size: 0.8rem;
 }
 
@@ -41,8 +40,26 @@ aside {
 }
 
 .tetris-container{
-    width: 600px;
-    height: 750px;
+    width: fit-content;
+    height: fit-content;
     background-size: cover;
     overflow: hidden;
+}
+
+.tetris-startbutton{
+    margin: 0 0 20px 50px;
+    padding: 20px;
+    border: 4px solid #333;
+    min-height: 30px;
+    width: 100%;
+    background: #000;
+    color: #999;
+    border-radius: 20px;
+}
+.tetris-startbutton:hover {
+    border: 4px solid #646464;
+}
+.tetris-startbutton:active {
+    background-color: #292929;
+    border: 4px solid #6b6b6b;
 }

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 // Components
 import Stage from './Stage.jsx';
 import Display from './Display.jsx';
@@ -83,7 +83,10 @@ const drop = () => {
     if (pause) return
     if (gameOver) {
       console.log("game over")
+      handlePause()
       // AQUI AÑADIR LOGICA PARA MANDAR EL RESULTADO AL SERVIDOR
+      // console.log(score,timer,rows,level)
+      
       return}
     if (keyCode === buttonsMap.moveLeftButton.keyCode) {
       movePlayer(-1); //mueve a la izquierda
@@ -97,6 +100,17 @@ const drop = () => {
     } 
   }
   
+  const timer = useMemo(()=>{
+    let minutos = String(Math.floor(time / 60))
+    let segundos = String(time % 60)
+    if(segundos.length === 1){
+      segundos = `0${segundos}`
+    }
+    if(minutos.length === 1){
+      minutos = `0${minutos}`
+    }
+    return` ${minutos} : ${segundos}`
+  },[time])
 
   useInterval(()=>{
     drop();
@@ -115,18 +129,12 @@ const drop = () => {
       <Stage stage={stage}  />
 
       <aside>
-
-        {
-          gameOver
-          ? <Display gameOver={gameOver} text1="Game Over"/>
-          : <div>
-              <Display text1="Score : " text2={score}/>
-              <Display text1="Rows : " text2={rows}/>
-              <Display text1="Level : " text2={level}/>
-              <Display text1="Time : " text2={time}/>
-            </div>
-        }
-
+        <Display text1="Time : " text2={timer}/>  
+        <Display text1="Puntuacion : " text2={score}/>
+        <Display text1="Lineas : " text2={rows}/>
+        <Display text1="Level : " text2={level}/>
+        
+           
         <StartButton callback={startGame} />
 
       </aside>

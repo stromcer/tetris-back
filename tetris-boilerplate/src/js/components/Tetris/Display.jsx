@@ -1,10 +1,15 @@
 import React from 'react';
 
 
-const Display = ({ gameOver, text2,text1 }) => (
-  <div className="tetris-display" gameOver={gameOver}>
-    <div>{text1}</div>{text2}
+const Display = ({text2,text1 }) => {
+
+  
+
+return (
+  <div className="tetris-display d-block text-center" >
+    <div>{text1}</div>
+    <div> {text2}</div>
   </div>
-)
+)}
 
 export default Display;
