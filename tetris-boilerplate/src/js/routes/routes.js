@@ -69,7 +69,7 @@ const routes = [
       element: <Jugar />
     },
     {
-      path: "/jugar/multiplayer",
+      path: "/jugar/multiplayer/",
       element: <Multiplayer />
     },
     {
