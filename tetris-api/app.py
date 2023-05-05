@@ -2,9 +2,10 @@ from flask import Flask, jsonify, render_template, request
 from src.database import db
 from src.admin import setup_admin
 from src.routes import api
-from flask_socketio import SocketIO, emit, join_room, leave_room
+from flask_socketio import SocketIO, emit, join_room, leave_room, send
 from flask_migrate import Migrate
 from flask_jwt_extended import JWTManager
+from flask_cors import CORS 
 
 # INICIAMOS APP
 app = Flask(__name__)
@@ -18,6 +19,10 @@ setup_admin(app)
 # Configuracion BBDD 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///tetrisonline.db"
 db.init_app(app) 
+
+
+# Iniciamos el CORS para las rutas normales de no socket
+CORS(app)
 
 # Configuracion y migracion de las tablas de la BBDD (Si no estan creadas)
 migrate = Migrate(app, db)
@@ -44,7 +49,7 @@ def http_call():
 def connected():
     """event listener para conectarse al servidor"""
     print(request.sid)
-    print("Un cliente se ha conectado")
+    print(f"Un cliente se ha conectado")
     emit("connect",{"data":f"id: {request.sid} is connected"})
 
 
@@ -60,6 +65,20 @@ def disconnected():
     """event listener para desconectarse del servidor"""
     print("El cliente se ha desconectado")
     emit("disconnect",f"user {request.sid} disconnected",broadcast=True)
+    
+@socketio.on('join')
+def on_join(data):
+    username = data['username']
+    room = data['room']
+    join_room(room)
+    send(username + ' has entered the room.', to=room)
+    
+@socketio.on('leave')
+def on_leave(data):
+    username = data['username']
+    room = data['room']
+    leave_room(room)
+    send(username + ' has left the room.', to=room)
 
 #RUTAS DE LAS LOBBYS
 @socketio.on('join')

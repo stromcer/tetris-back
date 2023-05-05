@@ -62,7 +62,7 @@ const resetPlayer = useCallback(() => {
   });
 }, []);
 
-  return [player, updatePlayerPos, resetPlayer, playerRotate];
+  return {player, updatePlayerPos, resetPlayer, playerRotate};
 }
 
 
