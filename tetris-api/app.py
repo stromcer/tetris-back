@@ -2,10 +2,9 @@ from flask import Flask, jsonify, render_template, request
 from src.database import db
 from src.admin import setup_admin
 from src.routes import api
-from flask_socketio import SocketIO, emit
+from flask_socketio import SocketIO, emit, join_room, leave_room
 from flask_migrate import Migrate
 from flask_jwt_extended import JWTManager
-
 
 # INICIAMOS APP
 app = Flask(__name__)
@@ -20,15 +19,12 @@ setup_admin(app)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///tetrisonline.db"
 db.init_app(app) 
 
-
 # Configuracion y migracion de las tablas de la BBDD (Si no estan creadas)
 migrate = Migrate(app, db)
-
 
 # Setup the Flask-JWT-Extended extension
 app.config["JWT_SECRET_KEY"] = "super-secret"  # Change this!
 jwt = JWTManager(app)
-
 
 
 # Configuracion socketIO
@@ -65,6 +61,20 @@ def disconnected():
     print("El cliente se ha desconectado")
     emit("disconnect",f"user {request.sid} disconnected",broadcast=True)
 
+#RUTAS DE LAS LOBBYS
+@socketio.on('join')
+def on_join(data):
+    username = data['username']
+    room = data['room']
+    join_room(room)
+    send(username + ' has entered the room.', to=room)
+
+@socketio.on('leave')
+def on_leave(data):
+    username = data['username']
+    room = data['room']
+    leave_room(room)
+    send(username + ' has left the room.', to=room)
 
 ## NO ESCRIBIR CODIGO DEBAJO DE ESTA LINEA.
 if __name__ == '__main__':

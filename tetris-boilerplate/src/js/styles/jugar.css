@@ -1,8 +1,17 @@
 .jugar-styles {
     width: 47rem;
     height: 34rem;
+    background-image: url("https://media.istockphoto.com/id/1367806327/es/foto/abstracto-colorido-bloques-de-fondo-juego-de-rompecabezas-ilustraci%C3%B3n-3d-a-diversas.jpg?s=612x612&w=0&k=20&c=SpfRDjp5BAK1Mj_85QUqp2uFB8i9eYevSF-Gg-kHtj8=");
     display: grid;
     justify-content: center;
+    align-items: center;
+}
+
+button.btn.btn-dark{
+    border: 2px solid black;
+    width: 12rem;
+    height: 4rem;
     border-radius: 5px;
-    background-image: url("https://p4.wallpaperbetter.com/wallpaper/175/454/387/tetris-video-games-wallpaper-preview.jpg");
+    font-size: large;
+    margin: 5px;
 }

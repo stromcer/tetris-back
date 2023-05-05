@@ -16,6 +16,7 @@ import Soporte from "../components/AcercaDe/Soporte";
 import Jugar from "../views/Jugar";
 import Multiplayer from "../components/Jugar/Multiplayer";
 import Singleplayer from "../components/Jugar/Singleplayer";
+import Mylobbys from "../components/Lobbys/MyLobbys";
 
 
 const routes = [
@@ -69,8 +70,15 @@ const routes = [
       element: <Jugar />
     },
     {
-      path: "/jugar/multiplayer",
-      element: <Multiplayer />
+      path: "/jugar/lobby",
+      children:[{
+        path: "/jugar/lobby/",
+        element: <Mylobbys />
+      },
+      {
+        path: "/jugar/lobby/multiplayer",
+        element: <Multiplayer />
+      }],
     },
     {
       path: "/jugar/singleplayer",
