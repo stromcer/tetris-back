@@ -24,11 +24,11 @@ const PreguntasFrecuentes = () => {
                         No, esto es un duelo a muerte y el ultimo en pie sera el vencendor.
                     </p>
                 </ol>
-                <ol> ¿Puedo acomodar las piezas a mi gust?
+                <ol> ¿Puedo acomodar las piezas a mi gusto?
                     <p className="mt-2">
                         Por supuesto, no hay una sola respuesta exacta para resolver el juego de Tetris,
                         lo único que siempre debes tener claro es que no importa cómo acomodes las piezas, 
-                        lo que si es vital es que hagas el mayor numero posible de linas.
+                        lo que si es vital es que hagas el mayor numero posible de lineas.
                     </p>
                 </ol>
                 <ol className="d-flex justify-content-end">

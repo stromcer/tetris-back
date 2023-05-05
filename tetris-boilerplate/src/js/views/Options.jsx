@@ -4,7 +4,7 @@ import SoundOptions from "../components/SoundOptions.jsx";
 
 const Options = () => {
   return (
-    <div className="container text-center p-5">
+    <div className="container text-center p-3">
       <h1 className="mb-5"> OPCIONES </h1>
       <div className="w-75 mx-auto">
         <div className="my-5"> PLACE HOLDER INICIAR SINGLEPLAYER </div>

@@ -1,0 +1,9 @@
+.lobbys-styles {
+    width: 20rem;
+    height: 10rem;
+    padding: 10px;
+    align-items: normal;
+    border-radius: 0%;
+    border: 3px solid darkcyan;
+    margin-left: 15px
+};
