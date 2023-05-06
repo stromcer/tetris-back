@@ -8,8 +8,8 @@ const WebSocketCall = ({ socket }) => {
   const handleKeyDown = (e) => {
     if(e.key === "Enter") {
       return handleSubmit()
-      }
-  }
+      };
+  };
 
   const handleText = (e) => {
     const inputMessage = e.target.value;
@@ -27,7 +27,7 @@ const WebSocketCall = ({ socket }) => {
   useEffect(() => {
     socket.on("data", (data) => {
       setMessages([...messages, data.data]);
-    });
+    }); 
     return () => {
       socket.off("data", () => {
         console.log("data event was removed");
