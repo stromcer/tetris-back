@@ -15,6 +15,7 @@ api = Blueprint('api', __name__)
 def singup():
     try:
         request_body = request.json
+        print(request_body)
         response = create_user(request_body)    
         return jsonify(response),201
     
@@ -36,7 +37,7 @@ def singup():
         return jsonify({"message":"Email or nickname already exists","code":"email / nickname"}),403
     
     
-@api.route("/login/", methods=["POST"])
+@api.route("/login", methods=["POST"])
 def login():
     try:
         request_body = request.json
@@ -54,7 +55,7 @@ def login():
 def get_user_info():
     token_info = get_jwt_identity()
     response = get_private_info_by_id(token_info["id"])
-    return jsonify(response)
+    return jsonify({"data": response, "message":"ok"}),200
 
 @api.route("/user/list", methods=["GET"])
 @jwt_required()

@@ -1,8 +1,15 @@
 import React from 'react';
-import { StyledDisplay } from './styles/StyledDisplay';
-const Display = ({ gameOver, text2,text1 }) => (
-  <StyledDisplay gameOver={gameOver}>
-    <div>{text1}</div>{text2}</StyledDisplay>
-)
+
+
+const Display = ({text2,text1 }) => {
+
+  
+
+return (
+  <div className="tetris-display d-block text-center" >
+    <div>{text1}</div>
+    <div> {text2}</div>
+  </div>
+)}
 
 export default Display;
