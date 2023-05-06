@@ -12,7 +12,6 @@ const useSocket = (room) => {
     
     socketInfo.on("connect", () => {
       socketInfo.emit('join', room);
-      console.log("Conectado", socketInfo)
     });
 
     setSocket(socketInfo);
@@ -23,7 +22,6 @@ const useSocket = (room) => {
     if (!socket) return;
 
     const handleMessage = (message) => {
-      console.log("mensaje recibido", message);
       setMessages((prevMessages) => [...prevMessages, message.data]);
     };
  
@@ -37,7 +35,7 @@ const useSocket = (room) => {
   const sendMessage = (message) => {
     console.log("mensaje a enviar", message);
     console.log("Mensajes en el hook", messages);
-    if (!socket) return;
+    if (!socket) return; 
     socket.emit('data', message);
   };
 

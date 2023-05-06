@@ -11,7 +11,7 @@ const Jugar = () => {
                 <Link to="/jugar/singleplayer">
                     <Button variant="dark">Singleplayer</Button>
                 </Link>
-                <Link to="/jugar/lobby">
+                <Link to="/jugar/multiplayer">
                     <Button variant="dark">Multiplayer</Button>
                 </Link>
             </ButtonGroup>

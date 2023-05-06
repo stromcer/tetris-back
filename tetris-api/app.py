@@ -60,7 +60,7 @@ def handle_message(data):
     print("data from the front end: ",str(data))
     emit("data", {'data': data["data"], 'id': request.sid}, to=room)
 
-
+ 
 @socketio.on("disconnect")
 def disconnected():
     """event listener para desconectarse del servidor"""
