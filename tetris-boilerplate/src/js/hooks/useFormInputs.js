@@ -1,4 +1,4 @@
-import {useState, useCallback, useEffect} from "react"
+import {useState, useEffect} from "react"
 
 
 const useFormInputs = () => {
@@ -10,7 +10,7 @@ const useFormInputs = () => {
         setUserInputs( prev => {
             
             const newState = { ...prev, [e.target.name] : e.target.value }
-            console.log(userTextInputs)
+
             return newState
         })
     }
@@ -24,7 +24,7 @@ const useFormInputs = () => {
     }
     
     useEffect(()=>{
-        console.log(userTextInputs)
+
     },[userTextInputs])
 
     return({userTextInputs, handleTextChangeInputs, handleChecksChangeInputs})

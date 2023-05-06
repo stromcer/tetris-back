@@ -70,13 +70,13 @@ const routes = [
       element: <Jugar />
     },
     {
-      path: "/jugar/lobby",
+      path: "/jugar/multiplayer",
       children:[{
-        path: "/jugar/lobby/",
+        path: "/jugar/multiplayer/",
         element: <Mylobbys />
       },
       {
-        path: "/jugar/lobby/multiplayer",
+        path: "/jugar/multiplayer/:lobbyName",
         element: <Multiplayer />
       }],
     },

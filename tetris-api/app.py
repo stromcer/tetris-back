@@ -2,7 +2,7 @@ from flask import Flask, jsonify, render_template, request
 from src.database import db
 from src.admin import setup_admin
 from src.routes import api
-from flask_socketio import SocketIO, emit, join_room, leave_room, send
+from flask_socketio import SocketIO, emit, join_room, leave_room,send
 from flask_migrate import Migrate
 from flask_jwt_extended import JWTManager
 from flask_cors import CORS 
@@ -55,45 +55,32 @@ def connected():
 
 @socketio.on('data')
 def handle_message(data):
+    room = data["room"]
     """event listener para cuando el cliente escribe un mensaje"""
     print("data from the front end: ",str(data))
-    emit("data",{'data':data,'id':request.sid},broadcast=True)
+    emit("data", {'data': data["data"], 'id': request.sid}, to=room)
 
-
+ 
 @socketio.on("disconnect")
 def disconnected():
     """event listener para desconectarse del servidor"""
     print("El cliente se ha desconectado")
     emit("disconnect",f"user {request.sid} disconnected",broadcast=True)
     
-@socketio.on('join')
-def on_join(data):
-    username = data['username']
-    room = data['room']
-    join_room(room)
-    send(username + ' has entered the room.', to=room)
-    
-@socketio.on('leave')
-def on_leave(data):
-    username = data['username']
-    room = data['room']
-    leave_room(room)
-    send(username + ' has left the room.', to=room)
+
 
 #RUTAS DE LAS LOBBYS
 @socketio.on('join')
 def on_join(data):
-    username = data['username']
-    room = data['room']
-    join_room(room)
-    send(username + ' has entered the room.', to=room)
+    join_room(data)
+    print(' has entered the room ' + data )
+    emit(' has entered the room', to=data)
 
 @socketio.on('leave')
 def on_leave(data):
-    username = data['username']
     room = data['room']
     leave_room(room)
-    send(username + ' has left the room.', to=room)
+    emit(' has left the room.', to=room)
 
 ## NO ESCRIBIR CODIGO DEBAJO DE ESTA LINEA.
 if __name__ == '__main__':
