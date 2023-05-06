@@ -1,8 +1,8 @@
 import {useState, useEffect} from "react"
 
 
-const useFormInputs = () => {
-    const [userTextInputs, setUserInputs] = useState({})
+const useFormInputs = (firstState) => {
+    const [userTextInputs, setUserInputs] = useState(firstState)
 
 
     const handleTextChangeInputs = (e) => {

@@ -8,7 +8,12 @@ import { useNavigate } from "react-router-dom";
 import useAppContext from "../store/context";
 
 const Login = () => {
-  const {userTextInputs, handleTextChangeInputs, handleChecksChangeInputs}  = useFormInputs()
+  const {userTextInputs, handleTextChangeInputs, handleChecksChangeInputs}  = useFormInputs({
+    email: "",
+    password: "",
+    remember: false
+    })
+    
   const navigate = useNavigate()
   const { actions } = useAppContext()
   const { handleToken } = actions

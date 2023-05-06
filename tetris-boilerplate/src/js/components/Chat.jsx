@@ -8,7 +8,8 @@ const Chat = ({ room }) => {
 
   const chat_room = useMemo(() => `chat_${room}`, [room]);
 
-  const { userTextInputs, handleTextChangeInputs} = useFormInputs();
+  const { userTextInputs, handleTextChangeInputs} = useFormInputs({
+    message: "",});
   const { messages, sendMessage } = useSocket(chat_room); 
 
   

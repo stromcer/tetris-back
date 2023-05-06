@@ -7,7 +7,13 @@ import apiFetch from "../utils/apiFetch";
 
 
 const Registro = () => {
-  const {userTextInputs, handleTextChangeInputs }  = useFormInputs()
+  const {userTextInputs, handleTextChangeInputs }  = useFormInputs({
+    nickname: "",
+    name: "",
+    email: "",
+    password: "",
+    passwordAgain: ""
+  })
 
   const handleSubmit = (e) => {
     if( userTextInputs.password !== userTextInputs.passwordAgain ){
