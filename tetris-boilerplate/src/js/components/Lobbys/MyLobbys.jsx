@@ -2,7 +2,6 @@ import React, { useEffect, useMemo } from "react";
 import Lobby from "./Lobby";
 import Chat from "../Chat";
 
-    
 
     const Mylobbys = () =>{
 
@@ -14,11 +13,11 @@ import Chat from "../Chat";
 
         
         return(
-            <div className="d-flex justify-content-between mt-5">
-                <div className="row m-5">
+            <div className="d-flex">
+                <div className="row">
                     {lobbys.map((lobby,index) => {
                         return(<Lobby key={index} content={lobby}/>)
-                    })};
+                    })}
                 </div>
                 <div className="row m-5">
                     <Chat  room="searchLobby" />
