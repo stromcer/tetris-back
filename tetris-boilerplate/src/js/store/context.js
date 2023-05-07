@@ -1,34 +1,45 @@
 import React, { createContext, useContext, useEffect, useState } from "react"
 import Tetris_Theme from "../utils/tetris_theme.js"
 import apiFetch from "../utils/apiFetch.js"
+
+
+
+
 const Context = createContext()
 
+
 export const ContextProvider = ({children}) => {
-    const [userInfo, setUserInfo] = useState({})
-    const [token , setToken ] = useState(localStorage.getItem("token"))
-    const [isUserLogged, setIsUserLogged] = useState(localStorage.getItem("isUserLogged"))
+
+    const handleAppLogin = () => {
+        const token = localStorage.getItem("token")
+        return token !== null 
+    }
+
+    const [userInfo, setUserInfo] = useState()
+    const [isUserLogged, setIsUserLogged] = useState(handleAppLogin())
 
 
-    const handleTheme = () => {
+    const handleStartTheme = () => {
         Tetris_Theme.play()
     }
 
-    const handleToken = () => {
-        setToken(localStorage.getItem("token"))
+    const handleUserLogin = () => {
+        setIsUserLogged(handleAppLogin())
     }
+    
 
     useEffect(() => {
-        const gettoken = async () => {
-            const response = await apiFetch("/api/user/info", "GET", "body", true )
-            console.log(response.data)
-            localStorage.setItem("isUserLogged", true)
+        if(!isUserLogged) return ;
+
+        const getInfo = async () => {
+            const response = await apiFetch("/api/user/info","GET","",true)
             setUserInfo(response.data)
-            setIsUserLogged(true)
-            return response
         }
-        const response = gettoken()
+
+        getInfo()
         
-    },[token])
+    }
+    ,[isUserLogged])
 
 
     const store = {
@@ -37,8 +48,8 @@ export const ContextProvider = ({children}) => {
     }
 
     const actions = {
-        handleTheme,
-        handleToken
+        handleStartTheme,
+        handleUserLogin
     }
     
 

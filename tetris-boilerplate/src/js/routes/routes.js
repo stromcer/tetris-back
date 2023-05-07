@@ -17,6 +17,7 @@ import Jugar from "../views/Jugar";
 import Multiplayer from "../components/Jugar/Multiplayer";
 import Singleplayer from "../components/Jugar/Singleplayer";
 import Mylobbys from "../components/Lobbys/MyLobbys";
+import UserProfile from "../views/UserProfile";
 
 
 const routes = [
@@ -31,6 +32,10 @@ const routes = [
   {
     path:"/registro",
     element:<Registro />
+  },
+  {
+    path:"/usuario",
+    element:<UserProfile />
   },
   {
     path:"/acercaDe/",

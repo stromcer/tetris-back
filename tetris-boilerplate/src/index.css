@@ -45,3 +45,30 @@ body * {
 .card input{
   margin-top: 320px;
 }
+
+
+.userProfile-scoreTable {
+  width: 90%;
+  table-layout: fixed;
+  text-align: center;
+}
+.userProfile-scoreTable td{
+  padding-inline: 8px;
+}
+
+.userProfile-scoreTable thead {
+  position: sticky;
+  top: 0;
+  background-color: #17191b;
+  z-index: 1;
+}
+.userProfile-scoreTable tbody{
+  font-size: smaller;
+}
+
+
+.table-scroll {
+  overflow-y: auto;
+  max-height: 500px;
+  position: relative;
+}

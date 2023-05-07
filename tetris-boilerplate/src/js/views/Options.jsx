@@ -1,18 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom"
 import SoundOptions from "../components/SoundOptions.jsx";
+import Controls from "../components/Controls.jsx";
+
 
 const Options = () => {
   return (
-    <div className="container text-center p-3">
-      <h1 className="mb-5"> OPCIONES </h1>
+    <div className="nes-container with-title col-8 mt-5 is-dark is-rounded text-center p-3">
+      <span className="title"> OPCIONES </span>
+
       <div className="w-75 mx-auto">
-        <div className="my-5"> PLACE HOLDER INICIAR SINGLEPLAYER </div>
-        <div className="my-5"> PLACE HOLDER INICIAR MULTIPLAYER </div>
-        <div className="my-5"> PLACE HOLDER VER MI PERFIL </div>
         <div className="my-5"> <SoundOptions/> </div>
-        <Link to="/options/controls"> CONTROLES DEL JUEGO </Link>
+        <Controls />
       </div>
+
     </div>
   );
 };

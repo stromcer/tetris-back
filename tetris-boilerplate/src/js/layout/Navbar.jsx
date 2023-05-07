@@ -3,8 +3,20 @@ import Nav from "react-bootstrap/Nav";
 import BootstrapNavbar from "react-bootstrap/Navbar";
 // import NavDropdown from "react-bootstrap/NavDropdown";
 import { NavLink } from "react-router-dom";
+import useAppContext from "../store/context";
 
 const Navbar = () => {
+  
+  const { store, actions } = useAppContext();
+  const { isUserLogged } = store;
+  const { handleUserLogin } = actions;
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    handleUserLogin();
+  }
+
+
   return (
     <BootstrapNavbar className="navbar-style px-5" expand="lg" variant="dark">
       <BootstrapNavbar.Brand href="/">Tetris Online</BootstrapNavbar.Brand>
@@ -23,12 +35,31 @@ const Navbar = () => {
             </Nav.Item>
           </div>
           <div className="d-flex">
-            <Nav.Item>
-              <NavLink to="/login">Iniciar sesion</NavLink>
-            </Nav.Item>
-            <Nav.Item>
-              <NavLink to="/registro">Registrarse</NavLink>
-            </Nav.Item>
+            
+            {
+              isUserLogged
+              ? <>
+              <Nav.Item>
+                <NavLink to="/usuario">MiPerfil</NavLink>
+               </Nav.Item>
+              <Nav.Item>
+                <button onClick={handleLogout}>Desconectarse</button>
+              </Nav.Item>
+              </>
+              : <>
+              <Nav.Item>
+                <NavLink to="/login">Iniciar sesion</NavLink>
+              </Nav.Item>
+              <Nav.Item>
+                <NavLink to="/registro">Registrarse</NavLink>
+              </Nav.Item>
+              </>
+            }
+
+            
+
+
+
           </div>
           {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
