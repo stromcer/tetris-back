@@ -54,5 +54,5 @@ class Score(db.Model):
             "broken_rows": self.broken_rows,
             "reached_level": self.reached_level,
             "time": self.time,
-            "user_id": self.user_id
+            "user": self.user.nickname
         }

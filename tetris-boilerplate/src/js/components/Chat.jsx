@@ -2,9 +2,12 @@ import React, { useMemo }  from "react";
 import "../styles/chat.css"
 import useSocket from "../hooks/useSocket";
 import useFormInputs from "../hooks/useFormInputs";
+import useAppContext from "../store/context";
+
 
 const Chat = ({ room }) => {
-
+  const { store, actions } = useAppContext();
+  const { isUserLogged, userInfo } = store;
 
   const chat_room = useMemo(() => `chat_${room}`, [room]);
 
@@ -15,6 +18,7 @@ const Chat = ({ room }) => {
   
   
   const handleKeyDown = (e) => {
+    if (isUserLogged) return
     if(e.key === "Enter") {
       return handleSubmit()
       }
@@ -26,7 +30,7 @@ const Chat = ({ room }) => {
     }
     handleTextChangeInputs({target:{name:"message", value:""}})
     //socket.emit("data", userTextInputs.message);
-    sendMessage({"room":chat_room, "data": `user : ${userTextInputs.message}`});
+    sendMessage({"room":chat_room, "data": `${userInfo.user_info.nickname} : ${userTextInputs.message}`});
   };
 
 
@@ -38,8 +42,8 @@ const Chat = ({ room }) => {
             return <li key={ind}>{message}</li>;
           })}
         </ul>
-        <input className="input-chat-styles" type="text" name="message" value={userTextInputs.message} onChange={handleTextChangeInputs} onKeyDown={handleKeyDown} />
-        <button className="bg-primary" type="button" onClick={handleSubmit}>ENVIAR</button>
+        <input disabled={!isUserLogged} className="input-chat-styles" type="text" name="message" value={isUserLogged ? userTextInputs.message : "Inicia sesion para chatear" } onChange={handleTextChangeInputs} onKeyDown={handleKeyDown} />
+        <button disabled={!isUserLogged} className="bg-primary" type="button" onClick={handleSubmit} >ENVIAR</button>
       </div>
     </div>
   );

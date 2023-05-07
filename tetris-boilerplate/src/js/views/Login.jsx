@@ -16,7 +16,7 @@ const Login = () => {
     
   const navigate = useNavigate()
   const { actions } = useAppContext()
-  const { handleToken } = actions
+  const { handleUserLogin } = actions
 
 
   const handleLogin = async () => {
@@ -32,11 +32,11 @@ const Login = () => {
 
     const response = await apiFetch("/api/login", "POST", body, false )
     console.log(response)
-    if(!response["token"]){
+    if(!response["token"]){ 
       alert(response["message"])
       return }
     localStorage.setItem("token", response["token"] )
-    handleToken()
+    handleUserLogin()
     navigate("/")
     
     return
