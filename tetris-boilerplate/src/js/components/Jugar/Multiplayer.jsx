@@ -3,8 +3,6 @@ import Tetris from "../Tetris/Tetris.jsx";
 import Chat from "../Chat";
 import { useParams } from "react-router-dom";
 
-
-
 const Multiplayer = () => {
     const { lobbyName } = useParams()
     return (
@@ -16,7 +14,7 @@ const Multiplayer = () => {
                 <Chat room={lobbyName} />
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default Multiplayer;

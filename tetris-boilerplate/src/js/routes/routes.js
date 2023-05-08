@@ -5,7 +5,6 @@ import Layout from "../layout/Layout";
 import Login from "../views/Login";
 import Registro from "../views/Registro";
 import Instrucciones from "../components/AcercaDe/Instrucciones";
-import Chat from "../components/Chat";
 import Controls from "../components/Controls";
 import AcercaDe from "../views/AcercaDe";
 import QueEsTetris from "../components/AcercaDe/QueEsTetris";
@@ -17,7 +16,9 @@ import Jugar from "../views/Jugar";
 import Multiplayer from "../components/Jugar/Multiplayer";
 import Singleplayer from "../components/Jugar/Singleplayer";
 import Mylobbys from "../components/Lobbys/MyLobbys";
+import Ranking from "../components/Ranking";
 import UserProfile from "../views/UserProfile";
+
 
 
 const routes = [
@@ -81,6 +82,10 @@ const routes = [
         element: <Mylobbys />
       },
       {
+        path: "/jugar/multiplayer/ranking",
+        element: <Ranking />
+      },
+      {
         path: "/jugar/multiplayer/:lobbyName",
         element: <Multiplayer />
       }],
@@ -89,10 +94,6 @@ const routes = [
       path: "/jugar/singleplayer",
       element: <Singleplayer />
     }]
-  },
-  {
-    path:"/chat",
-    element:<Chat />
   },
   {
     path:"/options/",

@@ -30,8 +30,7 @@ const getStoredControls = () => {
         "keyCode": 80,
         "code": "KeyP",
        }
-    }
-
-}
+    };
+};
 
 export default getStoredControls;

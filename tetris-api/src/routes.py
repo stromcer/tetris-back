@@ -81,8 +81,6 @@ def get_scores():
 @api.route("/leaderboard", methods=["GET"])
 def get_leaderboard():
     scores = Score.query.order_by(Score.total_score.desc()).distinct().group_by(Score.user_id).limit(10).all()
-    
     response = [ score.serialize() for score in scores ]    
-    
     
     return jsonify({"message":"ok","data":response}),200
