@@ -1,0 +1,19 @@
+.ranking-container.nes-container.is-dark {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 3rem;
+};
+  
+.ranking-container th,
+.ranking-container td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+};
+  
+.ranking-container th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+};

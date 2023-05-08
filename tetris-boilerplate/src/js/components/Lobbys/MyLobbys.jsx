@@ -2,7 +2,6 @@ import React, { useEffect, useMemo } from "react";
 import Lobby from "./Lobby";
 import Chat from "../Chat";
 import Button from "react-bootstrap/esm/Button";
-import Ranking from "../Ranking";
 import { Link } from "react-router-dom";
 
     const Mylobbys = () =>{
@@ -31,8 +30,7 @@ import { Link } from "react-router-dom";
                 <div className="ranking d-flex justify-content-center">
                     <Link to="ranking">
                         <Button variant="dark">
-                            <h6>Top Mundial</h6>
-                            <Ranking />
+                            <h6 className="mt-2">Top Mundial</h6>
                         </Button>
                     </Link>
                 </div>
