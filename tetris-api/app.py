@@ -18,6 +18,9 @@ app.register_blueprint(api, url_prefix='/api')
 setup_admin(app)
 
 # Configuracion BBDD 
+
+
+
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///tetrisonline.db"
 db.init_app(app) 
 

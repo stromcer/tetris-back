@@ -8,7 +8,7 @@ const useSocket = (room) => {
   useEffect(() => {
     if (!room) return;
 
-    const socketInfo = io('84.121.62.4:3245/');
+    const socketInfo = io(process.env.REACT_APP_BACKEND_URL);
     
     socketInfo.on("connect", () => {
       socketInfo.emit('join', room);
