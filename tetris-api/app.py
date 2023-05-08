@@ -5,7 +5,8 @@ from src.routes import api
 from flask_socketio import SocketIO, emit, join_room, leave_room,send
 from flask_migrate import Migrate
 from flask_jwt_extended import JWTManager
-from flask_cors import CORS
+from flask_cors import CORS 
+from decouple import config
 
 # INICIAMOS APP
 app = Flask(__name__)
@@ -23,7 +24,6 @@ setup_admin(app)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///tetrisonline.db"
 db.init_app(app) 
 
-
 # Iniciamos el CORS para las rutas normales de no socket
 CORS(app)
 
@@ -34,19 +34,20 @@ migrate = Migrate(app, db)
 app.config["JWT_SECRET_KEY"] = "super-secret"  # Change this!
 jwt = JWTManager(app)
 
-
 # Configuracion socketIO
 app.debug = True
 app.config["SECRET_KEY"] ='secret'
 socketio = SocketIO(app,cors_allowed_origins="*")
 
+# Obtener los valores de las variables de entorno
+FLASK_ENV = config('FLASK_ENV')
+SQLALCHEMY_DATABASE_URI = config('SQLALCHEMY_DATABASE_URI')
 
-#PARTE PARA RUTAS DE SOCKETS
+# PARTE PARA RUTAS DE SOCKETS
 @app.route("/")
 def http_call():
     data = {'data':'This text was fetched using an HTTP call to server on render'}
     return jsonify(data)
-
 
 @socketio.on("connect")
 def connected():

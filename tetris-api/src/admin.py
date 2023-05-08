@@ -3,19 +3,11 @@ from flask_admin import Admin
 from src.database import db, User, Score
 from flask_admin.contrib.sqla import ModelView
 
-
-
-
-
 class UserView(ModelView):
     column_list = ('id', 'nickname', 'email', 'password', "is_active") 
         
-
 class ScoresView(ModelView):
     column_list = ("id", "user", "game_date", "total_score", "broken_rows", "reached_level", "time")
-
-
-
 
 def setup_admin(app):
     app.secret_key = os.environ.get('FLASK_APP_KEY', 'sample key')

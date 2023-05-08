@@ -7,8 +7,6 @@ from src.utils.routes.create_score import create_score
 from src.utils.routes.get_user_scores import get_user_scores_by_id
 from flask_jwt_extended import jwt_required , get_jwt_identity
 
-
-
 api = Blueprint('api', __name__)
 
 @api.route("/singup", methods=["POST"])

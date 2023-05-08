@@ -13,6 +13,8 @@ flask-cors = "*"
 flask-migrate = "*"
 bcrypt = "*"
 eventlet = "*"
+python-dotenv = "*"
+python-decouple = "*"
 
 [dev-packages]
 
