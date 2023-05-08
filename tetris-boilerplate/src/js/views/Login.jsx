@@ -31,7 +31,7 @@ const Login = () => {
     }
 
     const response = await apiFetch("/api/login", "POST", body, false )
-    console.log(response)
+
     if(!response["token"]){ 
       alert(response["message"])
       return }

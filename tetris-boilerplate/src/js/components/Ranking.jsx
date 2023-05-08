@@ -9,7 +9,7 @@ const Ranking = () => {
     const [score, setScore] = useState([]);
 
     useEffect(() => {
-        axios.get('http://84.121.62.4:3245/api/leaderboard')
+        axios.get( process.env.REACT_APP_BACKEND_URL + '/api/leaderboard')
           .then(response => {
             setScore(response.data.data);
           })
@@ -18,6 +18,8 @@ const Ranking = () => {
           });
       }, []);
         console.log(score);
+
+        
     return(
         <div className="ranking-container nes-container is-dark">
             <h2>Top 10 Scores</h2>

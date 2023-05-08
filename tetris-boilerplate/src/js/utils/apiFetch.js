@@ -1,9 +1,8 @@
-const API_URL = 'http://localhost:3245';
 
 export default async function apiFetch( url, method, body = null, authRequired = false){
     const headers = new Headers();
     headers.set('Content-Type', 'application/json');
-    const full_route = API_URL + url
+    const full_route = process.env.REACT_APP_BACKEND_URL + url
 
     if (authRequired) {
       const token = localStorage.getItem('token'); 

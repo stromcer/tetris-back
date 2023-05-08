@@ -5,7 +5,7 @@ from src.routes import api
 from flask_socketio import SocketIO, emit, join_room, leave_room,send
 from flask_migrate import Migrate
 from flask_jwt_extended import JWTManager
-from flask_cors import CORS 
+from flask_cors import CORS
 
 # INICIAMOS APP
 app = Flask(__name__)
@@ -17,6 +17,9 @@ app.register_blueprint(api, url_prefix='/api')
 setup_admin(app)
 
 # Configuracion BBDD 
+
+
+
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///tetrisonline.db"
 db.init_app(app) 
 

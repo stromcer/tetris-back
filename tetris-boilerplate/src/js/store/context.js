@@ -42,6 +42,7 @@ export const ContextProvider = ({children}) => {
     ,[isUserLogged])
 
 
+
     const store = {
         userInfo,
         isUserLogged
