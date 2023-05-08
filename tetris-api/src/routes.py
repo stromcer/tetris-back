@@ -15,9 +15,8 @@ api = Blueprint('api', __name__)
 def singup():
     try:
         request_body = request.json
-        print(request_body)
         response = create_user(request_body)    
-        return jsonify(response),201
+        return jsonify({"message":"ok","data":response}),201
     
     except KeyError as e:
         if "nickname" in e.__repr__():
@@ -45,7 +44,7 @@ def login():
         return response
         
     except KeyError as e:   
-        if  "email" in e.__repr__():
+        if "email" in e.__repr__():
             return jsonify({"message":"Missing email","code":"email"}),400
         elif "password" in e.__repr__():
             return jsonify({"message":"Missing password","code":"password"}),400

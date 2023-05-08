@@ -9,7 +9,7 @@ const Controls = () => {
   const { handleRestoreDefault } = useControls();
 
   const handleExit = () => {
-    navigate("/options")
+    navigate("/")
   }
 
   const handleDefault = () => {
@@ -19,10 +19,8 @@ const Controls = () => {
 
   return (
     <>
-      <div className="container controls-container border-rounded py-5">
-        <div className="mb-5">
-          <h1 > CONTROLES </h1>
-        </div>
+      <div className="nes-container with-title is-dark controls-container py-2">
+      <span className="title">Controles</span>
 
         <div className="mx-auto w-75">
           <div className="col text-center">Rotar pieza :</div>
@@ -78,12 +76,14 @@ const Controls = () => {
           
         </div>
         
-        <div className="mx-auto my-5 opciones-controles">
+        
+
+      </div>
+
+      <div className="mx-auto my-5 opciones-controles">
           <button className="mx-5" onClick={handleExit}> VOLVER </button>
           <button className="mx-5" onClick={handleDefault}> PREDETERMINADAS </button>
         </div>
-
-      </div>
     </>
   );
 };
