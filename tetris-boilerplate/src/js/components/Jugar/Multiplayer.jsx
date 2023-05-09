@@ -2,6 +2,7 @@ import React from "react";
 import Tetris from "../Tetris/Tetris.jsx";
 import Chat from "../Chat";
 import { useParams } from "react-router-dom";
+import "../../styles/chat.css"
 
 const Multiplayer = () => {
     const { lobbyName } = useParams()
@@ -11,7 +12,7 @@ const Multiplayer = () => {
                 <Tetris />
             </div>
             <div className="d-flex m-5">
-                <Chat room={lobbyName} />
+                <Chat specialClass="bg-dark" room={lobbyName} />
             </div>
         </div>
     );
