@@ -12,6 +12,6 @@ python-decouple==3.8
 python-dotenv==0.21.1
 python-socketio==5.8.0
 gunicorn==20.1.0
-pymysql = "*"
-psycopg2 = "*"
-psycopg2-binary = "*"
+pymysql==1.0.2
+psycopg2==2.8.6
+psycopg2-binary==2.8.6
