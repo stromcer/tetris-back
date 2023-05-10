@@ -33,7 +33,7 @@ app.config["JWT_SECRET_KEY"] = "super-secret"  # Change this!
 jwt = JWTManager(app)
 
 # Configuracion socketIO
-app.debug = True
+
 app.config["SECRET_KEY"] ='secret'
 socketio = SocketIO(app,cors_allowed_origins="*")
 
