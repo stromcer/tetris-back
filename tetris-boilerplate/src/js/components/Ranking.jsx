@@ -1,6 +1,5 @@
 import React, { useState, useEffect} from "react";
 import axios from 'axios';
-import "../styles/ranking.css"
 import { useNavigate } from "react-router-dom";
 
 const Ranking = () => {
@@ -19,11 +18,11 @@ const Ranking = () => {
       }, []);
         console.log(score);
 
-        
     return(
-        <div className="ranking-container nes-container is-dark">
-            <h2>Top 10 Scores</h2>
-            <table>
+        <div className="nes-container is-dark mt-5 w-75">
+            <div className="nes-table-responsive">
+            <h2 className="text-primary">Top 10 Scores</h2>
+            <table className="userProfile-scoreTable mx-auto nes-table is-primary is-bordered is-centered is-dark mt-3">
             <thead>
             <tr>
                 <th>User</th>
@@ -42,7 +41,9 @@ const Ranking = () => {
             <div className="d-flex justify-content-end">
                 <button type="button" className="nes-btn is-error" onClick={() => navigate("/jugar/multiplayer")}>Volver</button>
             </div>
+            </div> 
         </div>
+            
     );
 };
 

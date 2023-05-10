@@ -40,3 +40,10 @@ aside{
 .chat-container li{
     font-size:0.9rem;
 }
+
+ul#chat-box {
+    max-height: 20rem;
+    min-height: 20rem;
+    overflow-y: scroll;
+}
+

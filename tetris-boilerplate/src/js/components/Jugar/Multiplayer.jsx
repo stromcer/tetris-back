@@ -3,6 +3,8 @@ import Tetris from "../Tetris/Tetris.jsx";
 import Chat from "../Chat";
 import { useNavigate, useParams } from "react-router-dom";
 import apiFetch from "../../utils/apiFetch.js";
+import "../../styles/chat.css"
+
 
 const Multiplayer = () => {
     const navigate = useNavigate()
@@ -40,7 +42,7 @@ const Multiplayer = () => {
                 <Tetris />
             </div>
             <div className="d-flex m-5">
-                <Chat room={lobbyName} />
+                <Chat specialClass="bg-dark" room={lobbyName} />
             </div>
         </div>
     );

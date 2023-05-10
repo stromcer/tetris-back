@@ -5,6 +5,7 @@ import React from "react";
 const Lobby = ({title, players, action , createGame=false,onButton=null}) => {
     return(
         <div className="lobbys-styles">
+
            
             {
                 !createGame 
@@ -21,6 +22,7 @@ const Lobby = ({title, players, action , createGame=false,onButton=null}) => {
                 ?<button className="btn btn-primary" onClick={action}>Unirse</button>
                 :<button className="btn btn-primary" onClick={onButton}>Crear</button>
             }
+
 
         </div>
     );

@@ -19,8 +19,6 @@ setup_admin(app)
 
 # Configuracion BBDD 
 
-
-
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///tetrisonline.db"
 db.init_app(app) 
 
@@ -40,7 +38,6 @@ app.config["SECRET_KEY"] ='secret'
 socketio = SocketIO(app,cors_allowed_origins="*")
 
 # Obtener los valores de las variables de entorno
-
 SQLALCHEMY_DATABASE_URI = config('SQLALCHEMY_DATABASE_URI')
 
 # PARTE PARA RUTAS DE SOCKETS

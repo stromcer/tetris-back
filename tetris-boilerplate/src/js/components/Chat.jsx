@@ -5,7 +5,7 @@ import useFormInputs from "../hooks/useFormInputs";
 import useAppContext from "../store/context";
 
 
-const Chat = ({ room }) => {
+const Chat = ({ room, specialClass }) => {
   const { store, actions } = useAppContext();
   const { isUserLogged, userInfo } = store;
 
@@ -15,14 +15,12 @@ const Chat = ({ room }) => {
     message: "",});
   const { messages, sendMessage } = useSocket(chat_room); 
 
-  
-  
   const handleKeyDown = (e) => {
     if (isUserLogged) return
     if(e.key === "Enter") {
       return handleSubmit()
-      }
-  }
+      };
+  };
 
   const handleSubmit = () => {
     if (!userTextInputs.message) {
@@ -35,17 +33,21 @@ const Chat = ({ room }) => {
 
 
   return (
+
     <div className="container-chat nes-container is-dark">
       <div className="chat-container">
+
         <ul className="text-danger" id="chat-box">
           {messages.map((message, ind) => {
             return <li key={ind}>{message}</li>;
           })}
         </ul>
+
         <footer>
           <input disabled={!isUserLogged} className="input-chat-styles" type="text" name="message" value={isUserLogged ? userTextInputs.message : "Inicia sesion para chatear" } onChange={handleTextChangeInputs} onKeyDown={handleKeyDown} />
           <button disabled={!isUserLogged} className="bg-primary" type="button" onClick={handleSubmit} >ENVIAR</button>
         </footer>
+
       </div>
     </div>
   );
