@@ -5,7 +5,7 @@ import useFormInputs from "../hooks/useFormInputs";
 import useAppContext from "../store/context";
 
 
-const Chat = ({ room, specialClass }) => {
+const Chat = ({ room }) => {
   const { store, actions } = useAppContext();
   const { isUserLogged, userInfo } = store;
 
@@ -34,8 +34,8 @@ const Chat = ({ room, specialClass }) => {
 
   return (
 
-    <div className="container-chat nes-container is-dark">
-      <div className="chat-container">
+    <div className="container-chat nes-container is-dark ">
+      <div className="input-button-styles">
 
         <ul className="text-danger" id="chat-box">
           {messages.map((message, ind) => {
