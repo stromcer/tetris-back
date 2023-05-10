@@ -7,6 +7,7 @@ from flask_migrate import Migrate
 from flask_jwt_extended import JWTManager
 from flask_cors import CORS 
 from decouple import config
+import os
 
 # INICIAMOS APP
 app = Flask(__name__)
@@ -18,8 +19,9 @@ app.register_blueprint(api, url_prefix='/api')
 setup_admin(app)
 
 # Configuracion BBDD 
+db_conection = os.getenv('SQLALCHEMY_DATABASE_URI')
+app.config['SQLALCHEMY_DATABASE_URI'] = db_conection
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///tetrisonline.db"
 db.init_app(app) 
 
 ##temporal para iniciar la BBDD
