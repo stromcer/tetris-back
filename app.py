@@ -22,6 +22,10 @@ setup_admin(app)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///tetrisonline.db"
 db.init_app(app) 
 
+##temporal para iniciar la BBDD
+with app.app_context():
+    db.create_all()
+    
 # Iniciamos el CORS para las rutas normales de no socket
 CORS(app)
 
