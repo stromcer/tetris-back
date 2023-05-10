@@ -14,7 +14,7 @@ class User(db.Model):
     is_active = db.Column(db.Boolean, nullable=False)
     
     def check_password(self, password):
-        return bcrypt.checkpw(password.encode('utf-8'), self.password)
+        return bcrypt.checkpw(password.encode('utf-8'), bytes(self.password,"utf-8"))
     
     def __repr__(self) -> str:
         return f"< User: {self.nickname} || Email: {self.email} >"
