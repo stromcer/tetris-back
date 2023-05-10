@@ -1,0 +1,1 @@
+web:pipenv run gunicorn app:app --workers 4 --threads 4
