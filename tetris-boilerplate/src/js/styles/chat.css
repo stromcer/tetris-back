@@ -1,17 +1,49 @@
 .container-chat.nes-container.is-dark {
     border-radius: 5px;
-    width: 40rem;
-    height: 17rem;
+
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    padding: 0 ;
+
 }
 
-.input-button-styles {
-    margin-right: -30px;
-    margin-left: -30px;
+.chat-container {
+    
+    flex: 1;
+    display:flex;
+    flex-direction: column;
+}
+.chat-container footer{
+    display:flex;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
+ul#chat-box{
+    display:flex;
+    position:relative;
+    flex-direction: column;
+    overflow-y: auto;
+}
 .input-chat-styles {
-    width: 84%;
-    height: 28px;
+
+
+    width: 100%;
+
+}
+
+.chat-container{
+    padding-inline: 0;
+}
+aside{
+    width: 50%;
+}
+
+.chat-container li{
+    font-size:0.9rem;
+
 }
 
 ul#chat-box {
@@ -20,8 +52,10 @@ ul#chat-box {
     overflow-y: scroll;
 }
 
+
 .multiplayer-chat-styles {
     display: flex;
     margin-top: 22rem;
     margin-left: 7.5rem;
 }
+

@@ -33,15 +33,21 @@ const Chat = ({ room }) => {
 
 
   return (
+
     <div className="container-chat nes-container is-dark ">
       <div className="input-button-styles">
+
         <ul className="text-danger" id="chat-box">
           {messages.map((message, ind) => {
             return <li key={ind}>{message}</li>;
           })}
         </ul>
-        <input disabled={!isUserLogged} className="input-chat-styles" type="text" name="message" value={isUserLogged ? userTextInputs.message : "Inicia sesion para chatear" } onChange={handleTextChangeInputs} onKeyDown={handleKeyDown} />
-        <button disabled={!isUserLogged} className="bg-primary" type="button" onClick={handleSubmit}>ENVIAR</button>
+
+        <footer>
+          <input disabled={!isUserLogged} className="input-chat-styles" type="text" name="message" value={isUserLogged ? userTextInputs.message : "Inicia sesion para chatear" } onChange={handleTextChangeInputs} onKeyDown={handleKeyDown} />
+          <button disabled={!isUserLogged} className="bg-primary" type="button" onClick={handleSubmit} >ENVIAR</button>
+        </footer>
+
       </div>
     </div>
   );

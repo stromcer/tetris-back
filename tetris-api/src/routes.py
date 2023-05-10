@@ -6,6 +6,7 @@ from src.utils.routes.get_private_info import get_private_info_by_id
 from src.utils.routes.create_score import create_score
 from src.utils.routes.get_user_scores import get_user_scores_by_id
 from flask_jwt_extended import jwt_required , get_jwt_identity
+from src.utils.routes.lobbys import Lobbys
 
 api = Blueprint('api', __name__)
 
@@ -81,4 +82,40 @@ def get_leaderboard():
     scores = Score.query.order_by(Score.total_score.desc()).distinct().group_by(Score.user_id).limit(10).all()
     response = [ score.serialize() for score in scores ]    
     
+    return jsonify({"message":"ok","data":response}),200
+
+
+
+
+
+
+# RUTAS PARA LOBBYS 
+
+@api.route("/lobbys")
+def send_lobbys():
+    response = Lobbys.get_lobbys()
+    return jsonify({"message":"ok","data":response}),200
+
+@api.route("/lobbys/create/<lobby_id>")
+@jwt_required()
+def new_lobby(lobby_id):
+    try:
+        response = Lobbys.create_lobby(lobby_id)
+        return jsonify({"message":"ok","data":response}),200
+    except:
+        return jsonify({"message":"Nombre de sala duplicada.","code":"Lobby_name_exists"}),400
+    
+@api.route("/lobbys/join/<lobby_id>")
+def handle_join_lobby(lobby_id):
+    print(lobby_id)
+    try:
+        response = Lobbys.join_lobby(lobby_id)
+        return jsonify({"message":"ok","data":response}),200
+    except:
+        return jsonify({"message":"La sala esta llena","code":"Lobby_full"}),400
+
+@api.route("/lobbys/leave/<lobby_id>")
+def handle_leave_lobby(lobby_id):
+
+    response = Lobbys.leave_lobby(lobby_id)
     return jsonify({"message":"ok","data":response}),200
