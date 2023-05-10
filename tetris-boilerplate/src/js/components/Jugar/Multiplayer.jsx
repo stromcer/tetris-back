@@ -1,18 +1,19 @@
-import React from "react";
+import React, { useEffect, useMemo } from "react";
 import Tetris from "../Tetris/Tetris.jsx";
 import Chat from "../Chat";
 import { useParams } from "react-router-dom";
 import "../../styles/chat.css"
 
 const Multiplayer = () => {
+    
     const { lobbyName } = useParams()
     return (
         <div className="d-flex">
-            <div className="">
+            <div>
                 <Tetris />
             </div>
-            <div className="d-flex m-5">
-                <Chat specialClass="bg-dark" room={lobbyName} />
+            <div className="multiplayer-chat-styles">
+                <Chat room={lobbyName} />
             </div>
         </div>
     );

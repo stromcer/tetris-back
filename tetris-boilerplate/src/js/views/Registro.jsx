@@ -1,11 +1,9 @@
 import React from "react";
-// import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import "../styles/registro.css"
 import useFormInputs from "../hooks/useFormInputs";
 import apiFetch from "../utils/apiFetch";
 import { useNavigate } from "react-router-dom";
-
 
 const Registro = () => {
   const {userTextInputs, handleTextChangeInputs }  = useFormInputs({
@@ -41,9 +39,6 @@ const Registro = () => {
     alert("El registro ha sido un exito")
     navigate("/login")
   }
-    
-
-
   return(
     <Form className="registro-styles nes-container is-rounded is-dark col-6">
       <Form.Group className="m-3" controlId="formBasicEmail">
