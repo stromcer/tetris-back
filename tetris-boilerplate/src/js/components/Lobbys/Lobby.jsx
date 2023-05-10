@@ -1,17 +1,27 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import "../../styles/lobby.css"
 
-const Lobby = (props) => {
+
+
+const Lobby = ({title, players, action , createGame=false,onButton=null}) => {
     return(
         <div className="lobbys-styles">
-            <h6 className="title">{props.content.title}</h6>
+           
+            {
+                !createGame 
+                ?<h6 className="title">{title}</h6>
+                :<input type="text" placeholder="Crear partida" name="lobbyName" onChange={action}/>
+            }
+            
 
-            <p>{props.content.players}</p>
-            <Link to="/jugar/multiplayer/multiplayer">
-                <button className="btn btn-primary">{props.content.button.text}</button>
+            <p>{players} / 4</p>
+            
+            
+            {
+                !createGame 
+                ?<button className="btn btn-primary" onClick={action}>Unirse</button>
+                :<button className="btn btn-primary" onClick={onButton}>Crear</button>
+            }
 
-            </Link>
         </div>
     );
 };

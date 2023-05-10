@@ -40,7 +40,7 @@ app.config["SECRET_KEY"] ='secret'
 socketio = SocketIO(app,cors_allowed_origins="*")
 
 # Obtener los valores de las variables de entorno
-FLASK_ENV = config('FLASK_ENV')
+
 SQLALCHEMY_DATABASE_URI = config('SQLALCHEMY_DATABASE_URI')
 
 # PARTE PARA RUTAS DE SOCKETS

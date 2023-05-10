@@ -72,3 +72,24 @@ body * {
   max-height: 500px;
   position: relative;
 }
+
+
+.lobby-container {
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: repeat(4, 15vh);
+  grid-template-columns: repeat(2, 18vw);
+}
+
+.lobby-chat{
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+
+}
+
+.lobby-wraper{
+  display: flex;
+  justify-content: space-between;
+}
