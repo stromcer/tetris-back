@@ -91,4 +91,4 @@ def on_leave(data):
 
 ## NO ESCRIBIR CODIGO DEBAJO DE ESTA LINEA.
 if __name__ == '__main__':
-    socketio.run(app, host="0.0.0.0", port=3245)
+    socketio.run(app, host="0.0.0.0", port=3245, debug=True)
