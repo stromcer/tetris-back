@@ -1,54 +1,53 @@
+class LobbyManager:
+    def __init__(self):
+        self.active_lobbys = []
 
+    def get_lobbys(self):
+        return self.active_lobbys
 
-active_lobbys = []
+    def create_lobby(self, lobby_id):
+        new_lobby = {
+            "title" : lobby_id,
+            "id" : lobby_id,
+            "player_list" : [],
+            "players" : 0
+        }
 
+        for lobby in self.active_lobbys:
+            if lobby["id"] == new_lobby["id"]:
+                raise KeyError("exists")
 
-def get_lobbys():
-    return active_lobbys
+        self.active_lobbys.append(new_lobby)
+        return self.active_lobbys
 
-def create_lobby(lobby_id):
-    new_lobby = {
-        "title" : lobby_id,
-        "players" : 0 ,
-        "id" : lobby_id,
-        "player_list" : []
-    }
-    
-    for lobby in active_lobbys:
-        if lobby["id"] == new_lobby["id"]:
-            raise KeyError("exists")
-        
-    
-    active_lobbys.append(new_lobby)
-    return active_lobbys
-    
+    def join_lobby(self, lobby_id, username):
+        for lobby in self.active_lobbys:
+            if lobby["id"] == lobby_id:
+                if lobby["players"] == 4:
+                    raise KeyError("full")
 
-def join_lobby(lobby_id, username):
-    for lobby in active_lobbys:
-        print(lobby["id"])
-        if lobby["id"] == lobby_id:
-            if lobby["players"] == 4:
-                raise KeyError("full")
-            
-            lobby["players"] += 1
-            lobby["player_list"].append(username)
+                lobby["player_list"].append(username)
+                lobby["players"] = len(lobby["player_list"])
+                return lobby
+
+        return False
+
+    def leave_lobby(self, lobby_id, username):
+        for lobby in self.active_lobbys:
+            if lobby["id"] != lobby_id:
+                continue
+
+            lobby["player_list"] = [player for player in lobby["player_list"] if player != username]
+            lobby["players"] = len(lobby["player_list"])
+
+            if lobby["players"] < 1:
+                self.active_lobbys = [lobby for lobby in self.active_lobbys if lobby["id"] != lobby_id]
+
             return lobby
-    
-    return False
-    
-    
-def leave_lobby(lobby_id, username):
-    
-    for lobby in active_lobbys:
-        
-        if lobby["id"] != lobby_id:
-            continue
-        
-        lobby["players"] -= 1
-        lobby["player_list"] = [ player for player in lobby["player_list"] if player != username]
-        
-        if lobby["players"] < 1:
-            return [ lobby for lobby in active_lobbys if lobby["id"] != lobby_id]
-                
-            
-        return lobby
+
+    def get_lobby_by_id(self, lobby_id):
+        for lobby in self.active_lobbys:
+            if lobby["id"] == lobby_id:
+                return lobby
+
+        return False
