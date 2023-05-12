@@ -9,6 +9,7 @@ from flask_cors import CORS
 from decouple import config
 import os
 
+
 # INICIAMOS APP
 app = Flask(__name__)
 
@@ -64,7 +65,7 @@ def connected():
 def handle_message(data):
     room = data["room"]
     """event listener para cuando el cliente escribe un mensaje"""
-    print("data from the front : ",str(data))
+    # print("data from the front : ",str(data))
     if "data" in data:
         emit("data", {'data': data["data"], 'id': request.sid}, to=room)
     if "stage" in data:
