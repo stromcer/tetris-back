@@ -106,16 +106,19 @@ def new_lobby(lobby_id):
         return jsonify({"message":"Nombre de sala duplicada.","code":"Lobby_name_exists"}),400
     
 @api.route("/lobbys/join/<lobby_id>")
+@jwt_required()
 def handle_join_lobby(lobby_id):
-    print(lobby_id)
+    user_info = get_jwt_identity()
+    print(user_info)
     try:
-        response = Lobbys.join_lobby(lobby_id)
+        response = Lobbys.join_lobby(lobby_id, user_info["nickname"])
         return jsonify({"message":"ok","data":response}),200
     except:
         return jsonify({"message":"La sala esta llena","code":"Lobby_full"}),400
 
 @api.route("/lobbys/leave/<lobby_id>")
+@jwt_required()
 def handle_leave_lobby(lobby_id):
-
-    response = Lobbys.leave_lobby(lobby_id)
+    user_info = get_jwt_identity()
+    response = Lobbys.leave_lobby(lobby_id,user_info["nickname"])
     return jsonify({"message":"ok","data":response}),200

@@ -49,7 +49,7 @@ SQLALCHEMY_DATABASE_URI = config('SQLALCHEMY_DATABASE_URI')
 # PARTE PARA RUTAS DE SOCKETS
 @app.route("/")
 def http_call():
-    data = {'data':'This text was fetched using an HTTP call to server on render'}
+    
     return jsonify(data)
 
 @socketio.on("connect")
@@ -64,10 +64,12 @@ def connected():
 def handle_message(data):
     room = data["room"]
     """event listener para cuando el cliente escribe un mensaje"""
-    print("data from the front end: ",str(data))
-    emit("data", {'data': data["data"], 'id': request.sid}, to=room)
-
- 
+    print("data from the front : ",str(data))
+    if "data" in data:
+        emit("data", {'data': data["data"], 'id': request.sid}, to=room)
+    if "stage" in data:
+         emit("stage", {'stage': data["stage"], 'id': request.sid}, to=room)
+         
 @socketio.on("disconnect")
 def disconnected():
     """event listener para desconectarse del servidor"""
@@ -87,6 +89,7 @@ def on_join(data):
 def on_leave(data):
     room = data['room']
     leave_room(room)
+    print(' has left the room ' + room )
     emit(' has left the room.', to=room)
 
 ## NO ESCRIBIR CODIGO DEBAJO DE ESTA LINEA.
