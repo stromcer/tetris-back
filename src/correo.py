@@ -1,18 +1,15 @@
+from email.message import EmailMessage
 import smtplib
 
-# Estableciendo conexion al servidor de correos SMTP
-conexion = smtplib.SMTP(host='smtp.gmail.com', port=587)
-conexion.ehlo()
-
-# Encriptacion TLS
-conexion.starttls()
-
-# Iniciar sesion en el servidor SMTP
-conexion.login(user = 'proyecto.tetris.test@gmail.com', password = 'tester123456')
-
-# Enviar correo
-mensaje = 'Esto es una prueba'
-conexion.sendmail(from_addr = 'proyecto.tetris.test@gmail.com', to_addrs='christopherjavier1998@gmail.com', msg= mensaje)
-
-# Desconeccion del servidor SMTP
-conexion.quit()
+remitente = "direccion@gmail.com"
+destinatario = "destinatario@ejemplo.com"
+mensaje = "¡Hola, mundo!"
+email = EmailMessage()
+email["From"] = remitente
+email["To"] = destinatario
+email["Subject"] = "Correo de prueba"
+email.set_content(mensaje)
+smtp = smtplib.SMTP_SSL("smtp.gmail.com")
+smtp.login(remitente, "clave_de_gmail_123")
+smtp.sendmail(remitente, destinatario, email.as_string())
+smtp.quit()
