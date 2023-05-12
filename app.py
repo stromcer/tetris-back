@@ -20,6 +20,7 @@ app.register_blueprint(api, url_prefix='/api')
 setup_admin(app)
 
 # Configuracion BBDD 
+
 db_conection = os.getenv('SQLALCHEMY_DATABASE_URI')
 app.config['SQLALCHEMY_DATABASE_URI'] = db_conection
 
