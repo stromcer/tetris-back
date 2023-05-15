@@ -7,7 +7,7 @@ from src.utils.routes.create_score import create_score
 from src.utils.routes.get_user_scores import get_user_scores_by_id
 from flask_jwt_extended import jwt_required , get_jwt_identity
 from src.utils.routes.lobbys.Lobbys import LobbyManager
-
+from src.utils.routes.get_highscores import get_top_scores
 
 active_lobbys = LobbyManager()
 
@@ -82,8 +82,7 @@ def get_scores():
 
 @api.route("/leaderboard", methods=["GET"])
 def get_leaderboard():
-    scores = Score.query.order_by(Score.total_score.desc()).distinct().group_by(Score.user_id).limit(10).all()
-    response = [ score.serialize() for score in scores ]    
+    response = get_top_scores()    
     
     return jsonify({"message":"ok","data":response}),200
 

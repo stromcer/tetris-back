@@ -18,7 +18,7 @@ app.register_blueprint(api, url_prefix='/api')
 
 # Iniciamos el admin
 setup_admin(app)
-
+ 
 # Configuracion BBDD 
 
 db_conection = os.getenv('SQLALCHEMY_DATABASE_URI')
