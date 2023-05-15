@@ -138,15 +138,15 @@ def get_lobby(lobby_id):
 
 @api.route("/recover_password", methods=["POST"])
 def recover_password():
-    #try:
-    email = request.json["email"]
-    caracteres = string.ascii_letters + string.digits + string.punctuation
-    new_password = ''.join(random.choice(caracteres) for i in range(8))
-    user = User.query.filter_by(email=email).first()
-    hashed_password = bcrypt.hashpw(new_password.encode('utf-8'), bcrypt.gensalt())
-    user.password = hashed_password
-    db.session.commit()
-    send_simple_message(email,"TETRIS-ONLINE || RESTAURAR CONTRASEñA",f"Su nueva contraseña es:'  {new_password}  '. Por motivos de seguridad le recomendamos cambiarla al iniciar sesion.")
-    return jsonify({"message":"ok","data":"Contraseña restaurada, revise el correo electronico."}),200
-    #except:
-    #    return jsonify({"message":"ok","data":"Contraseña restaurada, revise el correo electronicoNO."}),200
+    try:
+        email = request.json["email"]
+        caracteres = string.ascii_letters + string.digits + string.punctuation
+        new_password = ''.join(random.choice(caracteres) for i in range(8))
+        user = User.query.filter_by(email=email).first()
+        hashed_password = bcrypt.hashpw(new_password.encode('utf-8'), bcrypt.gensalt())
+        user.password = hashed_password
+        db.session.commit()
+        send_simple_message(email,"TETRIS-ONLINE || RESTAURAR CONTRASEñA",f"Su nueva contraseña es:'  {new_password}  '. Por motivos de seguridad le recomendamos cambiarla al iniciar sesion.")
+        return jsonify({"message":"ok","data":"Contraseña restaurada, revise el correo electronico."}),200
+    except:
+        return jsonify({"message":"ok","data":"Contraseña restaurada, revise el correo electronicoNO."}),200
