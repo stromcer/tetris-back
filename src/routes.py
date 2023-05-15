@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, url_for, Blueprint
-from src.database import User, Score
+from src.database import User, Score, db
 from src.utils.routes.create_user import create_user
 from src.utils.routes.user_login import user_login
 from src.utils.routes.get_private_info import get_private_info_by_id
@@ -8,6 +8,10 @@ from src.utils.routes.get_user_scores import get_user_scores_by_id
 from flask_jwt_extended import jwt_required , get_jwt_identity
 from src.utils.routes.lobbys.Lobbys import LobbyManager
 from src.utils.routes.get_highscores import get_top_scores
+from src.correo import send_simple_message
+import random
+import string
+import bcrypt
 
 active_lobbys = LobbyManager()
 
@@ -131,3 +135,18 @@ def handle_leave_lobby(lobby_id):
 def get_lobby(lobby_id):
     response = active_lobbys.get_lobby_by_id(lobby_id)
     return jsonify({"message":"ok","data":response}),200
+
+@api.route("/recover_password", methods=["POST"])
+def recover_password():
+    #try:
+    email = request.json["email"]
+    caracteres = string.ascii_letters + string.digits + string.punctuation
+    new_password = ''.join(random.choice(caracteres) for i in range(8))
+    user = User.query.filter_by(email=email).first()
+    hashed_password = bcrypt.hashpw(new_password.encode('utf-8'), bcrypt.gensalt())
+    user.password = hashed_password
+    db.session.commit()
+    send_simple_message(email,"TETRIS-ONLINE || RESTAURAR CONTRASEñA",f"Su nueva contraseña es:'  {new_password}  '. Por motivos de seguridad le recomendamos cambiarla al iniciar sesion.")
+    return jsonify({"message":"ok","data":"Contraseña restaurada, revise el correo electronico."}),200
+    #except:
+    #    return jsonify({"message":"ok","data":"Contraseña restaurada, revise el correo electronicoNO."}),200
