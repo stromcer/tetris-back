@@ -21,18 +21,6 @@ psycopg2 = "*"
 psycopg2-binary = "*"
 requests = "*"
 
-[dev-packages]
-flask = "*"
-flask-sqlalchemy = "*"
-flask-jwt-extended = "*"
-flask-admin = "*"
-flask-socketio = "*"
-flask-cors = "*"
-flask-migrate = "*"
-bcrypt = "*"
-eventlet = "*"
-python-dotenv = "*"
-python-decouple = "*"
 
 [requires]
 python_version = "3.11"

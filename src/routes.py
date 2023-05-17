@@ -135,7 +135,7 @@ def handle_leave_lobby(lobby_id):
 def get_lobby(lobby_id):
     response = active_lobbys.get_lobby_by_id(lobby_id)
     return jsonify({"message":"ok","data":response}),200
-
+ 
 @api.route("/recover_password", methods=["POST"])
 def recover_password():
     try:
